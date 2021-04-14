@@ -13,9 +13,12 @@
 		63D910EE2617224D008942A7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 63D910EC2617224D008942A7 /* Main.storyboard */; };
 		63D910F02617224F008942A7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 63D910EF2617224F008942A7 /* Assets.xcassets */; };
 		63D910F32617224F008942A7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 63D910F12617224F008942A7 /* LaunchScreen.storyboard */; };
+		6F0B62EAA4F083D4902D242B /* Pods_Wooly.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F1ADDABA082776D27F8C9BD /* Pods_Wooly.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		08C1EC575730892CC42C4536 /* Pods-Wooly.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Wooly.release.xcconfig"; path = "Target Support Files/Pods-Wooly/Pods-Wooly.release.xcconfig"; sourceTree = "<group>"; };
+		1F1ADDABA082776D27F8C9BD /* Pods_Wooly.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Wooly.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		63D910E32617224D008942A7 /* Wooly.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Wooly.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		63D910E62617224D008942A7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		63D910E82617224D008942A7 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -24,6 +27,7 @@
 		63D910EF2617224F008942A7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		63D910F22617224F008942A7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		63D910F42617224F008942A7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		73F9517BA5125A7E7E459DED /* Pods-Wooly.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Wooly.debug.xcconfig"; path = "Target Support Files/Pods-Wooly/Pods-Wooly.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,17 +35,30 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6F0B62EAA4F083D4902D242B /* Pods_Wooly.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		41A3E6FEA68B1B8A5A707E70 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				73F9517BA5125A7E7E459DED /* Pods-Wooly.debug.xcconfig */,
+				08C1EC575730892CC42C4536 /* Pods-Wooly.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		63D910DA2617224D008942A7 = {
 			isa = PBXGroup;
 			children = (
 				63D910E52617224D008942A7 /* Wooly */,
 				63D910E42617224D008942A7 /* Products */,
+				41A3E6FEA68B1B8A5A707E70 /* Pods */,
+				81CA80D9CFA69EC890B68DFC /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -67,6 +84,14 @@
 			path = Wooly;
 			sourceTree = "<group>";
 		};
+		81CA80D9CFA69EC890B68DFC /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				1F1ADDABA082776D27F8C9BD /* Pods_Wooly.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -74,9 +99,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 63D910F72617224F008942A7 /* Build configuration list for PBXNativeTarget "Wooly" */;
 			buildPhases = (
+				487A7530863A445A06B07962 /* [CP] Check Pods Manifest.lock */,
 				63D910DF2617224D008942A7 /* Sources */,
 				63D910E02617224D008942A7 /* Frameworks */,
 				63D910E12617224D008942A7 /* Resources */,
+				3AEC7C66E39F4C8FBF212FDF /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -131,6 +158,48 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		3AEC7C66E39F4C8FBF212FDF /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Wooly/Pods-Wooly-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Wooly/Pods-Wooly-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Wooly/Pods-Wooly-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		487A7530863A445A06B07962 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Wooly-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		63D910DF2617224D008942A7 /* Sources */ = {
@@ -283,6 +352,7 @@
 		};
 		63D910F82617224F008942A7 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 73F9517BA5125A7E7E459DED /* Pods-Wooly.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -302,6 +372,7 @@
 		};
 		63D910F92617224F008942A7 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 08C1EC575730892CC42C4536 /* Pods-Wooly.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
