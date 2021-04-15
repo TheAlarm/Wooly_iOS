@@ -19,9 +19,12 @@ class LoginByEmailVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        setStyle()
     }
-
+    
+    func setStyle(){
+        titleLabel.font = UIFont.notoSans(size: 20, family: .Bold)
+    }
 
 }
 

@@ -9,16 +9,12 @@ import Foundation
 import UIKit
 
 extension UIFont {
-    func hansSansBold(size: CGFloat) -> UIFont {
-        return UIFont(name: "SpoqaHanSansNeo-Bold", size: size)!
-    }
     
-    func hansSansRegular(size: CGFloat) -> UIFont {
-        return UIFont(name: "SpoqaHanSansNeo-Regular", size: size)!
+    enum Family: String{
+        case Bold, Regular, Light
     }
-    
-    func hansSansLight(size: CGFloat) -> UIFont {
-        return UIFont(name: "SpoqaHanSansNeo-Light", size: size)!
+    static func notoSans(size: CGFloat = 10, family: Family = .Regular) -> UIFont {
+        return UIFont(name:"SpoqaHanSansNeo-\(family)", size: size)!
     }
     
 }

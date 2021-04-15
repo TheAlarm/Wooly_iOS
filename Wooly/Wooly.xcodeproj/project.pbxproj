@@ -7,11 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		63B3EAAD26285CEA008DB5C9 /* Spoqa Han Sans Neo Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 63B3EAAA26285CE9008DB5C9 /* Spoqa Han Sans Neo Regular.otf */; };
+		63B3EAAE26285CEA008DB5C9 /* Spoqa Han Sans Neo Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 63B3EAAB26285CEA008DB5C9 /* Spoqa Han Sans Neo Bold.otf */; };
+		63B3EAAF26285CEA008DB5C9 /* Spoqa Han Sans Neo Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = 63B3EAAC26285CEA008DB5C9 /* Spoqa Han Sans Neo Light.otf */; };
 		63C3133526284B8100C30433 /* LoginByEmail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 63C3133426284B8100C30433 /* LoginByEmail.storyboard */; };
 		63C3133C26284CE200C30433 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63C3133B26284CE200C30433 /* UIColor+Extension.swift */; };
-		63C313432628512F00C30433 /* SpoqaHanSansNeo-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 63C313402628512F00C30433 /* SpoqaHanSansNeo-Light.ttf */; };
-		63C313442628512F00C30433 /* SpoqaHanSansNeo-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 63C313412628512F00C30433 /* SpoqaHanSansNeo-Bold.ttf */; };
-		63C313452628512F00C30433 /* SpoqaHanSansNeo-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 63C313422628512F00C30433 /* SpoqaHanSansNeo-Regular.ttf */; };
 		63C313482628519C00C30433 /* UIFont+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63C313472628519C00C30433 /* UIFont+Extension.swift */; };
 		63D910E72617224D008942A7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63D910E62617224D008942A7 /* AppDelegate.swift */; };
 		63D910E92617224D008942A7 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63D910E82617224D008942A7 /* SceneDelegate.swift */; };
@@ -25,11 +25,11 @@
 /* Begin PBXFileReference section */
 		08C1EC575730892CC42C4536 /* Pods-Wooly.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Wooly.release.xcconfig"; path = "Target Support Files/Pods-Wooly/Pods-Wooly.release.xcconfig"; sourceTree = "<group>"; };
 		1F1ADDABA082776D27F8C9BD /* Pods_Wooly.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Wooly.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		63B3EAAA26285CE9008DB5C9 /* Spoqa Han Sans Neo Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Spoqa Han Sans Neo Regular.otf"; sourceTree = "<group>"; };
+		63B3EAAB26285CEA008DB5C9 /* Spoqa Han Sans Neo Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Spoqa Han Sans Neo Bold.otf"; sourceTree = "<group>"; };
+		63B3EAAC26285CEA008DB5C9 /* Spoqa Han Sans Neo Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Spoqa Han Sans Neo Light.otf"; sourceTree = "<group>"; };
 		63C3133426284B8100C30433 /* LoginByEmail.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LoginByEmail.storyboard; sourceTree = "<group>"; };
 		63C3133B26284CE200C30433 /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
-		63C313402628512F00C30433 /* SpoqaHanSansNeo-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SpoqaHanSansNeo-Light.ttf"; sourceTree = "<group>"; };
-		63C313412628512F00C30433 /* SpoqaHanSansNeo-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SpoqaHanSansNeo-Bold.ttf"; sourceTree = "<group>"; };
-		63C313422628512F00C30433 /* SpoqaHanSansNeo-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SpoqaHanSansNeo-Regular.ttf"; sourceTree = "<group>"; };
 		63C313472628519C00C30433 /* UIFont+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+Extension.swift"; sourceTree = "<group>"; };
 		63D910E32617224D008942A7 /* Wooly.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Wooly.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		63D910E62617224D008942A7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -127,9 +127,9 @@
 		63C3133E2628506A00C30433 /* Font */ = {
 			isa = PBXGroup;
 			children = (
-				63C313412628512F00C30433 /* SpoqaHanSansNeo-Bold.ttf */,
-				63C313402628512F00C30433 /* SpoqaHanSansNeo-Light.ttf */,
-				63C313422628512F00C30433 /* SpoqaHanSansNeo-Regular.ttf */,
+				63B3EAAB26285CEA008DB5C9 /* Spoqa Han Sans Neo Bold.otf */,
+				63B3EAAC26285CEA008DB5C9 /* Spoqa Han Sans Neo Light.otf */,
+				63B3EAAA26285CE9008DB5C9 /* Spoqa Han Sans Neo Regular.otf */,
 			);
 			path = Font;
 			sourceTree = "<group>";
@@ -232,12 +232,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				63C313432628512F00C30433 /* SpoqaHanSansNeo-Light.ttf in Resources */,
-				63C313452628512F00C30433 /* SpoqaHanSansNeo-Regular.ttf in Resources */,
 				63D910F32617224F008942A7 /* LaunchScreen.storyboard in Resources */,
+				63B3EAAF26285CEA008DB5C9 /* Spoqa Han Sans Neo Light.otf in Resources */,
+				63B3EAAD26285CEA008DB5C9 /* Spoqa Han Sans Neo Regular.otf in Resources */,
 				63D910F02617224F008942A7 /* Assets.xcassets in Resources */,
+				63B3EAAE26285CEA008DB5C9 /* Spoqa Han Sans Neo Bold.otf in Resources */,
 				63C3133526284B8100C30433 /* LoginByEmail.storyboard in Resources */,
-				63C313442628512F00C30433 /* SpoqaHanSansNeo-Bold.ttf in Resources */,
 				63D910EE2617224D008942A7 /* Login.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
