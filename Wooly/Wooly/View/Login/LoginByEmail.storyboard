@@ -16,13 +16,13 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DZk-cP-yFI">
-                                <rect key="frame" x="-4" y="44" width="44" height="44"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DZk-cP-yFI">
+                                <rect key="frame" x="0.0" y="44" width="44" height="44"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="44" id="1sG-7y-oW2"/>
                                     <constraint firstAttribute="height" constant="44" id="iQz-yE-yYd"/>
                                 </constraints>
-                                <state key="normal" title="Button"/>
+                                <state key="normal" image="btn_back"/>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="wordWrap" numberOfLines="0" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ui6-XU-FiE">
                                 <rect key="frame" x="136.5" y="77" width="141.5" height="60"/>
@@ -153,13 +153,14 @@
                                     <constraint firstAttribute="width" constant="312" id="wbZ-BA-0Da"/>
                                 </constraints>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4X1-Wh-oLP">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4X1-Wh-oLP">
                                 <rect key="frame" x="352" y="308" width="24" height="24"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="24" id="boc-Pu-oA9"/>
                                     <constraint firstAttribute="width" constant="24" id="v49-4x-4Ca"/>
                                 </constraints>
-                                <state key="normal" title="Button"/>
+                                <state key="normal" image="btn_login_coverpassword"/>
+                                <state key="selected" image="btn_login_showpassword"/>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="(0/9)" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kgG-7D-WCl">
                                 <rect key="frame" x="344" y="264" width="38" height="21"/>
@@ -199,7 +200,7 @@
                             <constraint firstItem="4X1-Wh-oLP" firstAttribute="centerY" secondItem="sZo-Vm-iox" secondAttribute="centerY" id="XPg-6k-K6V"/>
                             <constraint firstItem="RGU-tY-X2b" firstAttribute="top" secondItem="sZo-Vm-iox" secondAttribute="bottom" constant="38" id="a4t-Cd-q1U"/>
                             <constraint firstItem="5m2-sq-ejd" firstAttribute="centerX" secondItem="Xdw-H6-yBQ" secondAttribute="centerX" id="b2j-eQ-dZB"/>
-                            <constraint firstItem="DZk-cP-yFI" firstAttribute="leading" secondItem="Xdw-H6-yBQ" secondAttribute="leading" constant="-4" id="b8O-75-WEb"/>
+                            <constraint firstItem="DZk-cP-yFI" firstAttribute="leading" secondItem="Xdw-H6-yBQ" secondAttribute="leading" id="b8O-75-WEb"/>
                             <constraint firstItem="4X1-Wh-oLP" firstAttribute="trailing" secondItem="sZo-Vm-iox" secondAttribute="trailing" constant="-8" id="dyB-SQ-Ln9"/>
                             <constraint firstItem="TbD-8C-DFx" firstAttribute="top" secondItem="5m2-sq-ejd" secondAttribute="bottom" constant="8" id="k0g-z6-776"/>
                             <constraint firstItem="sZo-Vm-iox" firstAttribute="leading" secondItem="uSW-95-9qi" secondAttribute="leading" id="lY8-iT-YO4"/>
@@ -230,6 +231,9 @@
         </scene>
     </scenes>
     <resources>
+        <image name="btn_back" width="144" height="144"/>
+        <image name="btn_login_coverpassword" width="72" height="72"/>
+        <image name="btn_login_showpassword" width="24" height="24"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
