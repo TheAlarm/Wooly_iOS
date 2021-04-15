@@ -11,6 +11,7 @@
 		63B3EAAE26285CEA008DB5C9 /* Spoqa Han Sans Neo Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 63B3EAAB26285CEA008DB5C9 /* Spoqa Han Sans Neo Bold.otf */; };
 		63B3EAAF26285CEA008DB5C9 /* Spoqa Han Sans Neo Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = 63B3EAAC26285CEA008DB5C9 /* Spoqa Han Sans Neo Light.otf */; };
 		63B3EAB2262866CD008DB5C9 /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63B3EAB1262866CD008DB5C9 /* UIView+Extension.swift */; };
+		63B3EAB526286993008DB5C9 /* UITextField+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63B3EAB426286993008DB5C9 /* UITextField+Extension.swift */; };
 		63C3133526284B8100C30433 /* LoginByEmail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 63C3133426284B8100C30433 /* LoginByEmail.storyboard */; };
 		63C3133C26284CE200C30433 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63C3133B26284CE200C30433 /* UIColor+Extension.swift */; };
 		63C313482628519C00C30433 /* UIFont+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63C313472628519C00C30433 /* UIFont+Extension.swift */; };
@@ -30,6 +31,7 @@
 		63B3EAAB26285CEA008DB5C9 /* Spoqa Han Sans Neo Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Spoqa Han Sans Neo Bold.otf"; sourceTree = "<group>"; };
 		63B3EAAC26285CEA008DB5C9 /* Spoqa Han Sans Neo Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Spoqa Han Sans Neo Light.otf"; sourceTree = "<group>"; };
 		63B3EAB1262866CD008DB5C9 /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
+		63B3EAB426286993008DB5C9 /* UITextField+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+Extension.swift"; sourceTree = "<group>"; };
 		63C3133426284B8100C30433 /* LoginByEmail.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LoginByEmail.storyboard; sourceTree = "<group>"; };
 		63C3133B26284CE200C30433 /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
 		63C313472628519C00C30433 /* UIFont+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+Extension.swift"; sourceTree = "<group>"; };
@@ -123,6 +125,7 @@
 				63C3133B26284CE200C30433 /* UIColor+Extension.swift */,
 				63C313472628519C00C30433 /* UIFont+Extension.swift */,
 				63B3EAB1262866CD008DB5C9 /* UIView+Extension.swift */,
+				63B3EAB426286993008DB5C9 /* UITextField+Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -296,6 +299,7 @@
 			files = (
 				63B3EAB2262866CD008DB5C9 /* UIView+Extension.swift in Sources */,
 				63D910EB2617224D008942A7 /* LoginByEmailVC.swift in Sources */,
+				63B3EAB526286993008DB5C9 /* UITextField+Extension.swift in Sources */,
 				63D910E72617224D008942A7 /* AppDelegate.swift in Sources */,
 				63D910E92617224D008942A7 /* SceneDelegate.swift in Sources */,
 				63C313482628519C00C30433 /* UIFont+Extension.swift in Sources */,
