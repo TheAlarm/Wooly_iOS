@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -48,8 +48,41 @@
 				73F9517BA5125A7E7E459DED /* Pods-Wooly.debug.xcconfig */,
 				08C1EC575730892CC42C4536 /* Pods-Wooly.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		63C31330262849F900C30433 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				63D910EF2617224F008942A7 /* Assets.xcassets */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		63C3133126284A0100C30433 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				63D910EC2617224D008942A7 /* Main.storyboard */,
+				63D910F12617224F008942A7 /* LaunchScreen.storyboard */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		63C3133226284A2500C30433 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				63D910EA2617224D008942A7 /* ViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		63C3133326284A5D00C30433 /* AppDelegate */ = {
+			isa = PBXGroup;
+			children = (
+				63D910E62617224D008942A7 /* AppDelegate.swift */,
+				63D910E82617224D008942A7 /* SceneDelegate.swift */,
+			);
+			path = AppDelegate;
 			sourceTree = "<group>";
 		};
 		63D910DA2617224D008942A7 = {
@@ -73,13 +106,11 @@
 		63D910E52617224D008942A7 /* Wooly */ = {
 			isa = PBXGroup;
 			children = (
-				63D910E62617224D008942A7 /* AppDelegate.swift */,
-				63D910E82617224D008942A7 /* SceneDelegate.swift */,
-				63D910EA2617224D008942A7 /* ViewController.swift */,
-				63D910EC2617224D008942A7 /* Main.storyboard */,
-				63D910EF2617224F008942A7 /* Assets.xcassets */,
-				63D910F12617224F008942A7 /* LaunchScreen.storyboard */,
 				63D910F42617224F008942A7 /* Info.plist */,
+				63C3133326284A5D00C30433 /* AppDelegate */,
+				63C31330262849F900C30433 /* Resources */,
+				63C3133226284A2500C30433 /* Controllers */,
+				63C3133126284A0100C30433 /* View */,
 			);
 			path = Wooly;
 			sourceTree = "<group>";
