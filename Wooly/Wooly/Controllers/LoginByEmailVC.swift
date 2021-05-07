@@ -23,10 +23,20 @@ class LoginByEmailVC: UIViewController {
     @IBOutlet weak var dividerView: UIView!
     @IBOutlet weak var signUpLabel: UILabel!
     @IBOutlet weak var signUpButton: UIButton!
+    @IBOutlet weak var passwordEyeButton: UIButton!
     
+    //MARK: - LifeCycle Methods
     override func viewDidLoad() {
         super.viewDidLoad()
         setStyle()
+    }
+    
+    //MARK: - Custom Methods
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        print(touches.first?.view)
+        self.emailTextField.resignFirstResponder()
+        self.passwordTextField.resignFirstResponder()
     }
     
     func setStyle(){
@@ -55,6 +65,9 @@ class LoginByEmailVC: UIViewController {
         passwordCountLabel.font = UIFont.notoSans(size: 12, family: .Regular)
         passwordCountLabel.textColor = .gray4
         
+        passwordEyeButton.setImage(UIImage(named:"btn_login_coverpassword"), for: .normal)
+        passwordEyeButton.setImage(UIImage(named:"btn_login_showpassword"), for: .selected)
+        
         dividerView.backgroundColor = .lineGray
         
         loginButton.titleLabel?.font = UIFont.notoSans(size: 16, family: .Bold)
@@ -72,6 +85,18 @@ class LoginByEmailVC: UIViewController {
         signUpButton.setTitleColor(.mainColor, for: .normal)
         signUpButton.setBorder(borderColor: .mainColor, borderWidth: 1)
         signUpButton.makeRounded(cornerRadius: 22)
+    }
+    
+    //MARK: - IBActions
+    
+    @IBAction func touchUpPasswordEyeButton(_ sender: Any) {
+        passwordEyeButton.isSelected = !passwordEyeButton.isSelected
+        if passwordEyeButton.isSelected == true{
+            passwordTextField.isSecureTextEntry = false
+        }
+        else{
+            passwordTextField.isSecureTextEntry = true
+        }
     }
     
 }
