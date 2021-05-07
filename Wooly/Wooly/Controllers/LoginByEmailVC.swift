@@ -8,6 +8,10 @@
 import UIKit
 
 class LoginByEmailVC: UIViewController {
+    //MARK: - Custom Properties
+    
+    let minPasswordLength = 0
+    let maxPasswordLength = 9
     
     //MARK: - IBOutlet
     
@@ -29,12 +33,12 @@ class LoginByEmailVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setStyle()
+        passwordTextField.delegate = self
     }
     
     //MARK: - Custom Methods
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        print(touches.first?.view)
         self.emailTextField.resignFirstResponder()
         self.passwordTextField.resignFirstResponder()
     }
@@ -98,6 +102,34 @@ class LoginByEmailVC: UIViewController {
             passwordTextField.isSecureTextEntry = true
         }
     }
+    @IBAction func passwordTextFieldEditingChanged(_ sender: UITextField) {
+//        if let text = sender.text {
+//            // 초과되는 텍스트 제거
+//            if text.count > maxPasswordLength {
+//                let index = text.index(text.startIndex, offsetBy: maxPasswordLength - 1)
+//                let newString = text[...index]
+//                sender.text = String(newString)
+//            }
+//            passwordCountLabel.text = "(\((sender.text ?? "" ).count)/\(maxPasswordLength))"
+//        }
+
+    }
     
+}
+
+extension LoginByEmailVC: UITextFieldDelegate{
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        
+        let originalStringCount = (textField.text ?? "").count
+        let newStringCount = originalStringCount + string.count - range.length
+        
+        if textField == passwordTextField{
+            if newStringCount > maxPasswordLength{
+                return false
+            }
+            passwordCountLabel.text = "(\(newStringCount)/\(maxPasswordLength))"
+        }
+        return true
+    }
 }
 
