@@ -31,7 +31,9 @@ class LoginByEmailVC: UIViewController {
     
     func setStyle(){
         titleLabel.font = UIFont.notoSans(size: 20, family: .Bold)
-        
+        let titleAttributedString = NSMutableAttributedString(string: titleLabel.text ?? "")
+        titleAttributedString.addAttribute(.foregroundColor, value: UIColor.mainColor, range: (titleLabel.text as! NSString).range(of: "로그인"))
+        titleLabel.attributedText = titleAttributedString
         emailLabel.font = UIFont.notoSans(size: 16, family: .Regular)
         
         emailTextField.font = UIFont.notoSans(size: 16, family: .Regular)
