@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Y6W-OH-hqX">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
@@ -18,9 +18,31 @@
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NzH-yf-bzH">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="255"/>
+                                <subviews>
+                                    <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Snh-zV-9ey">
+                                        <rect key="frame" x="66.5" y="77.5" width="281" height="100"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="281" id="6zd-Ga-aWb"/>
+                                            <constraint firstAttribute="height" constant="100" id="SrY-1W-gfk"/>
+                                        </constraints>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9fj-Js-1SM">
+                                        <rect key="frame" x="75.5" y="85.5" width="263" height="84"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="84" id="M7K-IG-0C3"/>
+                                            <constraint firstAttribute="width" constant="263" id="pCf-3o-lUl"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
+                                    <constraint firstItem="Snh-zV-9ey" firstAttribute="centerY" secondItem="NzH-yf-bzH" secondAttribute="centerY" id="4k5-TV-U5g"/>
+                                    <constraint firstItem="9fj-Js-1SM" firstAttribute="centerX" secondItem="Snh-zV-9ey" secondAttribute="centerX" id="E2r-u2-qEG"/>
                                     <constraint firstAttribute="width" secondItem="NzH-yf-bzH" secondAttribute="height" multiplier="375:231" id="hPS-up-P9n"/>
+                                    <constraint firstItem="9fj-Js-1SM" firstAttribute="centerY" secondItem="Snh-zV-9ey" secondAttribute="centerY" id="hp3-La-xIX"/>
+                                    <constraint firstItem="Snh-zV-9ey" firstAttribute="centerX" secondItem="NzH-yf-bzH" secondAttribute="centerX" id="tLD-kT-qIv"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -33,12 +55,14 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="nextAlarmDashedView" destination="9fj-Js-1SM" id="Dz6-DO-j7s"/>
+                        <outlet property="nextAlarmMessageView" destination="Snh-zV-9ey" id="Jaz-PT-Gnq"/>
                         <outlet property="purpleBackgroundView" destination="NzH-yf-bzH" id="iNG-dB-kz7"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-423" y="-4"/>
+            <point key="canvasLocation" x="-423.1884057971015" y="-4.0178571428571423"/>
         </scene>
     </scenes>
     <resources>
