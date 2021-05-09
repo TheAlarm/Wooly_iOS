@@ -29,7 +29,7 @@ class LoginByEmailVC: UIViewController {
     @IBOutlet weak var dividerView: UIView!
     @IBOutlet weak var signUpLabel: UILabel!
     @IBOutlet weak var signUpButton: UIButton!
-    @IBOutlet weak var passwordEyeButton: UIButton!
+    @IBOutlet weak var passwordShowButton: UIButton!
     
     //MARK: - LifeCycle Methods
     override func viewDidLoad() {
@@ -72,8 +72,8 @@ class LoginByEmailVC: UIViewController {
         passwordCountLabel.font = UIFont.notoSans(size: 12, family: .Regular)
         passwordCountLabel.textColor = .gray4
         
-        passwordEyeButton.setImage(UIImage(named:"btn_login_coverpassword"), for: .normal)
-        passwordEyeButton.setImage(UIImage(named:"btn_login_showpassword"), for: .selected)
+        passwordShowButton.setImage(UIImage(named:"btn_login_coverpassword"), for: .normal)
+        passwordShowButton.setImage(UIImage(named:"btn_login_showpassword"), for: .selected)
         
         dividerView.backgroundColor = .lineGray
         
@@ -96,15 +96,20 @@ class LoginByEmailVC: UIViewController {
     
     //MARK: - IBActions
     
-    @IBAction func touchUpPasswordEyeButton(_ sender: Any) {
-        passwordEyeButton.isSelected = !passwordEyeButton.isSelected
-        if passwordEyeButton.isSelected == true{
+    @IBAction func passwordShowButtonDidTap(_ sender: Any) {
+        passwordShowButton.isSelected = !passwordShowButton.isSelected
+        if passwordShowButton.isSelected == true{
             passwordTextField.isSecureTextEntry = false
         }
         else{
             passwordTextField.isSecureTextEntry = true
         }
     }
+    
+    @IBAction func backButtonDidTap(_ sender: Any) {
+        self.navigationController?.popViewController(animated: true)
+    }
+    
 
     
 }
