@@ -8,6 +8,11 @@
 import UIKit
 
 class LoginByEmailVC: UIViewController {
+    //MARK: - Custom Properties
+    
+    let maxPasswordCount: Int = 9
+    
+    let textFieldPadding: CGFloat = 12
     
     //MARK: - IBOutlet
     
@@ -23,10 +28,21 @@ class LoginByEmailVC: UIViewController {
     @IBOutlet weak var dividerView: UIView!
     @IBOutlet weak var signUpLabel: UILabel!
     @IBOutlet weak var signUpButton: UIButton!
+    @IBOutlet weak var passwordShowButton: UIButton!
     
+    //MARK: - LifeCycle Methods
     override func viewDidLoad() {
         super.viewDidLoad()
         setStyle()
+        emailTextField.delegate = self
+        passwordTextField.delegate = self
+    }
+    
+    //MARK: - Custom Methods
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.emailTextField.resignFirstResponder()
+        self.passwordTextField.resignFirstResponder()
     }
     
     func setStyle(){
@@ -41,7 +57,7 @@ class LoginByEmailVC: UIViewController {
         emailTextField.backgroundColor = .lightBackground
         emailTextField.setBorder(borderColor: .lineGray, borderWidth: 1)
         emailTextField.makeRounded(cornerRadius: 3)
-        emailTextField.addLeftPadding(left: 10)
+        emailTextField.addLeftPadding(left: textFieldPadding)
         
         passwordLabel.font = UIFont.notoSans(size: 16, family: .Regular)
         
@@ -50,10 +66,13 @@ class LoginByEmailVC: UIViewController {
         passwordTextField.backgroundColor = .lightBackground
         passwordTextField.setBorder(borderColor: .lineGray, borderWidth: 1)
         passwordTextField.makeRounded(cornerRadius: 3)
-        passwordTextField.addLeftPadding(left: 10)
+        passwordTextField.addLeftPadding(left: textFieldPadding)
         
         passwordCountLabel.font = UIFont.notoSans(size: 12, family: .Regular)
         passwordCountLabel.textColor = .gray4
+        
+        passwordShowButton.setImage(UIImage(named:"btn_login_coverpassword"), for: .normal)
+        passwordShowButton.setImage(UIImage(named:"btn_login_showpassword"), for: .selected)
         
         dividerView.backgroundColor = .lineGray
         
@@ -74,5 +93,47 @@ class LoginByEmailVC: UIViewController {
         signUpButton.makeRounded(cornerRadius: 22)
     }
     
+    //MARK: - IBActions
+    
+    @IBAction func passwordShowButtonDidTap(_ sender: Any) {
+        passwordShowButton.isSelected = !passwordShowButton.isSelected
+        if passwordShowButton.isSelected == true{
+            passwordTextField.isSecureTextEntry = false
+        }
+        else{
+            passwordTextField.isSecureTextEntry = true
+            passwordTextField.clearsOnBeginEditing = false
+        }
+    }
+    @IBAction func passwordTextFieldEditChanged(_ sender: UITextField) {
+        sender.limitTextCount(maxCount: maxPasswordCount)
+        
+        passwordCountLabel.text = "(\((sender.text ?? "").count)/\(maxPasswordCount))"
+    }
+    
+    @IBAction func backButtonDidTap(_ sender: Any) {
+        self.navigationController?.popViewController(animated: true)
+    }
+    
+}
+
+extension LoginByEmailVC: UITextFieldDelegate{
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        textField.setBorder(borderColor: .mainColor, borderWidth: 1)
+    }
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        textField.setBorder(borderColor: .lineGray, borderWidth: 1)
+    }
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        guard let text = textField.text else {return false}
+        if textField == passwordTextField{
+            // 중간에 추가되는 텍스트 막기
+            if text.count >= maxPasswordCount && range.length == 0 && range.location < maxPasswordCount {
+                return false
+            }
+        }
+            
+        return true
+    }
 }
 
