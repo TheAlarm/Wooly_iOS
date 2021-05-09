@@ -10,8 +10,7 @@ import UIKit
 class LoginByEmailVC: UIViewController {
     //MARK: - Custom Properties
     
-    let minPasswordLength: Int = 0
-    let maxPasswordLength: Int = 9
+    let maxPasswordCount: Int = 9
     
     let textFieldPadding: CGFloat = 12
     
@@ -103,14 +102,18 @@ class LoginByEmailVC: UIViewController {
         }
         else{
             passwordTextField.isSecureTextEntry = true
+            passwordTextField.clearsOnBeginEditing = false
         }
+    }
+    @IBAction func passwordTextFieldEditChanged(_ sender: UITextField) {
+        sender.limitTextCount(maxCount: maxPasswordCount)
+        
+        passwordCountLabel.text = "(\((sender.text ?? "").count)/\(maxPasswordCount))"
     }
     
     @IBAction func backButtonDidTap(_ sender: Any) {
         self.navigationController?.popViewController(animated: true)
     }
-    
-
     
 }
 
@@ -122,16 +125,14 @@ extension LoginByEmailVC: UITextFieldDelegate{
         textField.setBorder(borderColor: .lineGray, borderWidth: 1)
     }
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        
-        let originalStringCount = (textField.text ?? "").count
-        let newStringCount = originalStringCount + string.count - range.length
-        
+        guard let text = textField.text else {return false}
         if textField == passwordTextField{
-            if newStringCount > maxPasswordLength{
+            // 중간에 추가되는 텍스트 막기
+            if text.count >= maxPasswordCount && range.length == 0 && range.location < maxPasswordCount {
                 return false
             }
-            passwordCountLabel.text = "(\(newStringCount)/\(maxPasswordLength))"
         }
+            
         return true
     }
 }
