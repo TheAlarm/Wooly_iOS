@@ -10,8 +10,10 @@ import UIKit
 class LoginByEmailVC: UIViewController {
     //MARK: - Custom Properties
     
-    let minPasswordLength = 0
-    let maxPasswordLength = 9
+    let minPasswordLength: Int = 0
+    let maxPasswordLength: Int = 9
+    
+    let textFieldPadding: CGFloat = 12
     
     //MARK: - IBOutlet
     
@@ -33,6 +35,7 @@ class LoginByEmailVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setStyle()
+        emailTextField.delegate = self
         passwordTextField.delegate = self
     }
     
@@ -55,7 +58,7 @@ class LoginByEmailVC: UIViewController {
         emailTextField.backgroundColor = .lightBackground
         emailTextField.setBorder(borderColor: .lineGray, borderWidth: 1)
         emailTextField.makeRounded(cornerRadius: 3)
-        emailTextField.addLeftPadding(left: 10)
+        emailTextField.addLeftPadding(left: textFieldPadding)
         
         passwordLabel.font = UIFont.notoSans(size: 16, family: .Regular)
         
@@ -64,7 +67,7 @@ class LoginByEmailVC: UIViewController {
         passwordTextField.backgroundColor = .lightBackground
         passwordTextField.setBorder(borderColor: .lineGray, borderWidth: 1)
         passwordTextField.makeRounded(cornerRadius: 3)
-        passwordTextField.addLeftPadding(left: 10)
+        passwordTextField.addLeftPadding(left: textFieldPadding)
         
         passwordCountLabel.font = UIFont.notoSans(size: 12, family: .Regular)
         passwordCountLabel.textColor = .gray4
@@ -102,22 +105,17 @@ class LoginByEmailVC: UIViewController {
             passwordTextField.isSecureTextEntry = true
         }
     }
-    @IBAction func passwordTextFieldEditingChanged(_ sender: UITextField) {
-//        if let text = sender.text {
-//            // 초과되는 텍스트 제거
-//            if text.count > maxPasswordLength {
-//                let index = text.index(text.startIndex, offsetBy: maxPasswordLength - 1)
-//                let newString = text[...index]
-//                sender.text = String(newString)
-//            }
-//            passwordCountLabel.text = "(\((sender.text ?? "" ).count)/\(maxPasswordLength))"
-//        }
 
-    }
     
 }
 
 extension LoginByEmailVC: UITextFieldDelegate{
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        textField.setBorder(borderColor: .mainColor, borderWidth: 1)
+    }
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        textField.setBorder(borderColor: .lineGray, borderWidth: 1)
+    }
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         
         let originalStringCount = (textField.text ?? "").count
