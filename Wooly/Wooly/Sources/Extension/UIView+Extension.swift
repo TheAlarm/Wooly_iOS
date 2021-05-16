@@ -10,7 +10,7 @@ import UIKit
 // UIView Extension
 extension UIView {
     
-    // Set Rounded View
+    /// Set Rounded View
     func makeRounded(cornerRadius : CGFloat?){
         
         // UIView 의 모서리가 둥근 정도를 설정
@@ -24,7 +24,7 @@ extension UIView {
         self.layer.masksToBounds = true
     }
     
-    // Set UIView's Shadow
+    /// Set UIView's Shadow
     func dropShadow(color: UIColor, offSet: CGSize, opacity: Float, radius: CGFloat) {
         
         // 그림자 색상 설정
@@ -43,7 +43,7 @@ extension UIView {
         layer.rasterizationScale = UIScreen.main.scale
     }
     
-    // Set UIView's Border
+    /// Set UIView's Border
     func setBorder(borderColor : UIColor?, borderWidth : CGFloat?) {
         
         // UIView 의 테두리 색상 설정
@@ -61,5 +61,30 @@ extension UIView {
             // borderWidth 변수가 nil 일 경우의 default
             self.layer.borderWidth = 1.0
         }
+    }
+    
+ /**
+     set rounded border with dashed line
+    - parameters:
+        - strokeColor: 테두리색
+        - fillColor: 채우기색
+        - cornerRadius: radius for corner sections
+        - lineDashPattern: [lineLength, lineGap]
+        - lineWidth: dashline 두께
+        - lineCap: dashline 끝 모양
+     */
+    func setRoundedDashedBorder(strokeColor: CGColor,fillColor:CGColor?, cornerRadius: CGFloat,lineDashPattern: [NSNumber],lineWidth: CGFloat, lineCap: CAShapeLayerLineCap){
+        let dashedLayer = CAShapeLayer()
+        dashedLayer.strokeColor = strokeColor
+        dashedLayer.fillColor = fillColor
+        dashedLayer.lineDashPattern = lineDashPattern
+        dashedLayer.lineWidth = lineWidth
+        dashedLayer.lineCap = lineCap
+        dashedLayer.frame = self.bounds
+        let path = CGMutablePath()
+        path.addRoundedRect(in: self.bounds, cornerWidth: cornerRadius, cornerHeight: cornerRadius)
+        dashedLayer.path = path
+        self.layer.addSublayer(dashedLayer)
+        
     }
 }

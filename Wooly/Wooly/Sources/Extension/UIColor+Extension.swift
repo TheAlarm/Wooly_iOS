@@ -57,4 +57,15 @@ extension UIColor {
         return UIColor(white: 189.0 / 255.0, alpha: 1.0)
     }
     
+    @nonobjc class var lightPeriwinkle: UIColor {
+        return UIColor(red: 190.0 / 255.0, green: 200.0 / 255.0, blue: 1.0, alpha: 1.0)
+    }
+    
+    @nonobjc class var paleLilac: UIColor {
+        return UIColor(red: 223.0 / 255.0, green: 228.0 / 255.0, blue: 1.0, alpha: 1.0)
+    }
+    
+    @nonobjc class var paleGrey: UIColor {
+        return UIColor(red: 247.0 / 255.0, green: 249.0 / 255.0, blue: 253.0 / 255.0, alpha: 1.0)
+      }
 }
