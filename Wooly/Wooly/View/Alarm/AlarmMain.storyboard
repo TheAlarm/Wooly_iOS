@@ -31,8 +31,26 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rFv-hb-thm">
                                         <rect key="frame" x="25" y="67" width="263" height="84"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1zh-lK-sg0">
-                                                <rect key="frame" x="14" y="31.666666666666671" width="42" height="21"/>
+                                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="다음 알람까지" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vyt-Zo-o7H">
+                                                <rect key="frame" x="13" y="13" width="93" height="27"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="27" id="Zf7-hL-ToF"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1zh-lK-sg0">
+                                                <rect key="frame" x="14" y="42" width="0.0" height="0.0"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="8시간 32분 남았어요" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rVF-WY-ECx">
+                                                <rect key="frame" x="13" y="38" width="236" height="36"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="36" id="2uS-ge-fC6"/>
+                                                </constraints>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -40,7 +58,12 @@
                                         </subviews>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <constraints>
+                                            <constraint firstItem="Vyt-Zo-o7H" firstAttribute="leading" secondItem="rFv-hb-thm" secondAttribute="leading" constant="13" id="4E7-ow-yu6"/>
+                                            <constraint firstItem="rVF-WY-ECx" firstAttribute="leading" secondItem="Vyt-Zo-o7H" secondAttribute="leading" id="9AJ-J5-bbr"/>
+                                            <constraint firstItem="rVF-WY-ECx" firstAttribute="top" secondItem="Vyt-Zo-o7H" secondAttribute="bottom" constant="-2" id="BN8-vY-sUq"/>
+                                            <constraint firstAttribute="trailing" secondItem="rVF-WY-ECx" secondAttribute="trailing" constant="14" id="QRC-Vk-fbu"/>
                                             <constraint firstAttribute="height" constant="84" id="X72-uW-fYh"/>
+                                            <constraint firstItem="Vyt-Zo-o7H" firstAttribute="top" secondItem="rFv-hb-thm" secondAttribute="top" constant="13" id="eOa-JU-haG"/>
                                             <constraint firstItem="1zh-lK-sg0" firstAttribute="leading" secondItem="rFv-hb-thm" secondAttribute="leading" constant="14" id="meN-jf-JVW"/>
                                             <constraint firstAttribute="width" constant="263" id="nfc-S9-OlB"/>
                                             <constraint firstItem="1zh-lK-sg0" firstAttribute="centerY" secondItem="rFv-hb-thm" secondAttribute="centerY" id="qC4-t9-V1l"/>
@@ -67,20 +90,21 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="778"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="bfa-jS-HXK">
-                                    <size key="itemSize" width="128" height="128"/>
+                                    <size key="itemSize" width="58" height="44"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="AlarmCardCVC" id="fWX-QW-kjn" customClass="AlarmCardCVC" customModule="Wooly" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="58" height="44"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="t3e-MJ-7sy">
-                                            <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="58" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </collectionViewCellContentView>
+                                        <size key="customSize" width="58" height="44"/>
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
@@ -102,7 +126,9 @@
                         <outlet property="alarmCardCollectionView" destination="hLQ-u2-CNr" id="gUZ-oU-EEh"/>
                         <outlet property="dongdongBottomConstraint" destination="Of8-5D-byU" id="ECl-kY-jM3"/>
                         <outlet property="nextAlarmDashedView" destination="rFv-hb-thm" id="suR-i0-3IC"/>
-                        <outlet property="nextAlarmMessageLabel" destination="1zh-lK-sg0" id="rSf-b3-W8Z"/>
+                        <outlet property="nextAlarmMessageBigLabel" destination="rVF-WY-ECx" id="HJZ-4l-HxR"/>
+                        <outlet property="nextAlarmMessageEmptyLabel" destination="1zh-lK-sg0" id="rSf-b3-W8Z"/>
+                        <outlet property="nextAlarmMessageSmallLabel" destination="Vyt-Zo-o7H" id="L1X-iv-iN6"/>
                         <outlet property="nextAlarmMessageView" destination="WEt-bO-dG8" id="whA-lq-Tqb"/>
                         <outlet property="purpleBackgroundView" destination="dil-kU-0jb" id="Fyv-jy-bPN"/>
                     </connections>

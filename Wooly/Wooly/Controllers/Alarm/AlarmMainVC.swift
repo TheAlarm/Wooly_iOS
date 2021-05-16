@@ -13,7 +13,19 @@ class AlarmMainVC: UIViewController {
     let screenBounds = UIScreen.main.bounds
     let defaultViewWidth: CGFloat = 375
     let nextAlarmMessageViewHeight: CGFloat = 198
-    let nextAlarmMessageEmptyString: String = "등록된 알람이 없어요 ."
+    let nextAlarmMessageEmptyString: String = "등록된 알람이 없어요."
+    let nextAlarmMessageString: String = ""
+    let alarmCardNib = UINib(nibName: "AlarmCardCVC", bundle: nil)
+    var nextAlarmTime: Date? = nil {
+        didSet{
+            let hasNext = nextAlarmTime != nil
+            nextAlarmMessageSmallLabel.isHidden = !hasNext
+            nextAlarmMessageBigLabel.isHidden = !hasNext
+            nextAlarmMessageEmptyLabel.isHidden = hasNext
+            setNextAlarmMessage(time: nextAlarmTime)
+        }
+        
+    }
     var nextAlarmState: NextAlarm = .empty
     var alarmList = ["10:30","12:58","10:30","12:58","10:30","12:58","10:30","12:58","10:30","12:58"]
     
@@ -23,7 +35,9 @@ class AlarmMainVC: UIViewController {
     @IBOutlet weak var purpleBackgroundView: UIView!
     @IBOutlet weak var nextAlarmMessageView: UIView!
     @IBOutlet weak var nextAlarmDashedView: UIView!
-    @IBOutlet weak var nextAlarmMessageLabel: UILabel!
+    @IBOutlet weak var nextAlarmMessageEmptyLabel: UILabel!
+    @IBOutlet weak var nextAlarmMessageSmallLabel: UILabel!
+    @IBOutlet weak var nextAlarmMessageBigLabel: UILabel!
     @IBOutlet weak var alarmCardCollectionView: UICollectionView!
 
     override func viewDidLoad() {
@@ -32,16 +46,14 @@ class AlarmMainVC: UIViewController {
         alarmCardCollectionView.delegate = self
         alarmCardCollectionView.dataSource = self
         setStyle()
-        setNextAlarmMessage(nextAlarmState: nextAlarmState, time: nil)
+        setNextAlarmMessage(time: nil)
+        alarmCardCollectionView.register(alarmCardNib, forCellWithReuseIdentifier: "AlarmCardCVC")
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
         print("appear")
-        print(alarmCardCollectionView.frame.size)
-        alarmCardCollectionView.bringSubviewToFront(alarmCardCollectionView.visibleCells[0].contentView)
-//        alarmCardCollectionView.reloadData()
-//        setStyle()
+        nextAlarmTime = Date()
         
     }
     func setStyle(){
@@ -57,25 +69,28 @@ class AlarmMainVC: UIViewController {
         nextAlarmDashedView.layer.cornerRadius = 25
         nextAlarmDashedView.setRoundedDashedBorder(strokeColor: UIColor.paleLilac.cgColor, fillColor: nil, cornerRadius: 25, lineDashPattern: [5,10], lineWidth: 2, lineCap: .round)
         
-        nextAlarmMessageLabel.font = UIFont.notoSans(size: 18, family: .Regular)
+        nextAlarmMessageEmptyLabel.font = UIFont.notoSans(size: 18, family: .Regular)
+        nextAlarmMessageEmptyLabel.textColor = .gray1
+        let attributedString = NSMutableAttributedString(string: nextAlarmMessageEmptyString)
+        attributedString.addAttribute(.font, value: UIFont.notoSans(size: 18, family: .Bold), range: NSString(string: nextAlarmMessageEmptyString).range(of: "등록된 알람"))
+        nextAlarmMessageEmptyLabel.attributedText = attributedString
         
-        nextAlarmMessageLabel.textColor = .gray1
+        
+        nextAlarmMessageSmallLabel.font = UIFont.notoSans(size: 18, family: .Light)
+        nextAlarmMessageSmallLabel.textColor = .gray1
+        
+        nextAlarmMessageBigLabel.font = UIFont.notoSans(size: 24, family: .Bold)
+        nextAlarmMessageBigLabel.textColor = .gray1
+        
 
     }
-    func setNextAlarmMessage(nextAlarmState: NextAlarm, time: String?){
-        switch nextAlarmState{
-            case .empty:
-                let attributedString = NSMutableAttributedString(string: nextAlarmMessageEmptyString)
-                attributedString.addAttribute(.font, value: UIFont.notoSans(size: 18, family: .Bold), range: NSString(string: nextAlarmMessageEmptyString).range(of: "등록된 알람"))
-                nextAlarmMessageLabel.attributedText = attributedString
-            case .next:
-                print()
-                
-                
+    func setNextAlarmMessage(time: Date?){
+        if time != nil{
+            let timeString = time!.getTimeString()
+            let attributedString = NSMutableAttributedString(string: "\(timeString) 남았어요")
+            attributedString.addAttribute(.font, value: UIFont.notoSans(size: 24, family: .Light), range: attributedString.mutableString.range(of: "남았어요"))
+            nextAlarmMessageBigLabel.attributedText = attributedString
         }
-    
-    
-    
     }
 }
 
@@ -113,7 +128,7 @@ extension AlarmMainVC: UICollectionViewDataSource{
     
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "AlarmCardCVC", for: indexPath) as? AlarmCardCVC else{ return UICollectionViewCell()}
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "AlarmCardCVC", for: indexPath)
         return cell
     }
     

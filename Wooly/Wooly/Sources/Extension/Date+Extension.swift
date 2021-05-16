@@ -6,3 +6,11 @@
 //
 
 import Foundation
+
+extension Date{
+    func getTimeString() -> String{
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "H시 m분"
+        return dateFormatter.string(from: self)
+    }
+}

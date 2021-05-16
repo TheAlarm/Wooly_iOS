@@ -11,6 +11,7 @@
 		635992212647F54A005D96A4 /* AlarmMainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635992202647F54A005D96A4 /* AlarmMainVC.swift */; };
 		635992502651113E005D96A4 /* AlarmCardCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6359924E2651113E005D96A4 /* AlarmCardCVC.swift */; };
 		635992512651113E005D96A4 /* AlarmCardCVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6359924F2651113E005D96A4 /* AlarmCardCVC.xib */; };
+		6379CD0726517D1E00F38E7F /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6379CD0626517D1E00F38E7F /* Date+Extension.swift */; };
 		63B3EAAD26285CEA008DB5C9 /* Spoqa Han Sans Neo Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 63B3EAAA26285CE9008DB5C9 /* Spoqa Han Sans Neo Regular.otf */; };
 		63B3EAAE26285CEA008DB5C9 /* Spoqa Han Sans Neo Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 63B3EAAB26285CEA008DB5C9 /* Spoqa Han Sans Neo Bold.otf */; };
 		63B3EAAF26285CEA008DB5C9 /* Spoqa Han Sans Neo Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = 63B3EAAC26285CEA008DB5C9 /* Spoqa Han Sans Neo Light.otf */; };
@@ -35,6 +36,7 @@
 		635992202647F54A005D96A4 /* AlarmMainVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmMainVC.swift; sourceTree = "<group>"; };
 		6359924E2651113E005D96A4 /* AlarmCardCVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmCardCVC.swift; sourceTree = "<group>"; };
 		6359924F2651113E005D96A4 /* AlarmCardCVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AlarmCardCVC.xib; sourceTree = "<group>"; };
+		6379CD0626517D1E00F38E7F /* Date+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extension.swift"; sourceTree = "<group>"; };
 		63B3EAAA26285CE9008DB5C9 /* Spoqa Han Sans Neo Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Spoqa Han Sans Neo Regular.otf"; sourceTree = "<group>"; };
 		63B3EAAB26285CEA008DB5C9 /* Spoqa Han Sans Neo Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Spoqa Han Sans Neo Bold.otf"; sourceTree = "<group>"; };
 		63B3EAAC26285CEA008DB5C9 /* Spoqa Han Sans Neo Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Spoqa Han Sans Neo Light.otf"; sourceTree = "<group>"; };
@@ -162,6 +164,7 @@
 				63C313472628519C00C30433 /* UIFont+Extension.swift */,
 				63B3EAB1262866CD008DB5C9 /* UIView+Extension.swift */,
 				63B3EAB426286993008DB5C9 /* UITextField+Extension.swift */,
+				6379CD0626517D1E00F38E7F /* Date+Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -340,6 +343,7 @@
 				63D910EB2617224D008942A7 /* LoginByEmailVC.swift in Sources */,
 				63B3EAB526286993008DB5C9 /* UITextField+Extension.swift in Sources */,
 				63D910E72617224D008942A7 /* AppDelegate.swift in Sources */,
+				6379CD0726517D1E00F38E7F /* Date+Extension.swift in Sources */,
 				63D910E92617224D008942A7 /* SceneDelegate.swift in Sources */,
 				63C313482628519C00C30433 /* UIFont+Extension.swift in Sources */,
 				63C3133C26284CE200C30433 /* UIColor+Extension.swift in Sources */,
