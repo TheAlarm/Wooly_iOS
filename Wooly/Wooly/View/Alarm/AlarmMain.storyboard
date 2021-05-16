@@ -108,18 +108,28 @@
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4LI-F5-lbI">
+                                <rect key="frame" x="301" y="702" width="62" height="62"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="62" id="HfE-IP-haA"/>
+                                    <constraint firstAttribute="width" constant="62" id="bVA-k6-3t0"/>
+                                </constraints>
+                                <state key="normal" image="btnMakealarmShadow"/>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="dil-kU-0jb" firstAttribute="width" secondItem="dil-kU-0jb" secondAttribute="height" multiplier="375:231" id="A1f-KG-gmM"/>
                             <constraint firstItem="hLQ-u2-CNr" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="DvD-uR-lrV"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="4LI-F5-lbI" secondAttribute="bottom" constant="14" id="Lgw-gN-QY9"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="hLQ-u2-CNr" secondAttribute="bottom" id="P0A-L3-NAe"/>
                             <constraint firstItem="dil-kU-0jb" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="P5s-SS-jzz"/>
                             <constraint firstItem="dil-kU-0jb" firstAttribute="top" secondItem="5EZ-qb-Rvc" secondAttribute="top" id="bDr-1m-j8B"/>
                             <constraint firstItem="hLQ-u2-CNr" firstAttribute="top" secondItem="5EZ-qb-Rvc" secondAttribute="top" id="hFF-Ul-1df"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="hLQ-u2-CNr" secondAttribute="trailing" id="mwI-dr-O95"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="dil-kU-0jb" secondAttribute="trailing" id="rPv-ah-OsW"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="4LI-F5-lbI" secondAttribute="trailing" constant="12" id="yy5-Fx-acC"/>
                         </constraints>
                     </view>
                     <connections>
@@ -139,6 +149,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="btnMakealarmShadow" width="62" height="62"/>
         <image name="imgMainBgDongdong" width="99" height="109"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
