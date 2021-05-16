@@ -78,6 +78,7 @@ extension UIView {
         dashedLayer.strokeColor = strokeColor
         dashedLayer.fillColor = fillColor
         dashedLayer.lineDashPattern = lineDashPattern
+        dashedLayer.lineWidth = lineWidth
         dashedLayer.lineCap = lineCap
         dashedLayer.frame = self.bounds
         let path = CGMutablePath()
