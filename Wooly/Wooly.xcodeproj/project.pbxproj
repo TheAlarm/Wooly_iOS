@@ -12,11 +12,13 @@
 		635992502651113E005D96A4 /* AlarmCardCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6359924E2651113E005D96A4 /* AlarmCardCVC.swift */; };
 		635992512651113E005D96A4 /* AlarmCardCVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6359924F2651113E005D96A4 /* AlarmCardCVC.xib */; };
 		6379CD0726517D1E00F38E7F /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6379CD0626517D1E00F38E7F /* Date+Extension.swift */; };
+		637F709C266D0AEB00958FFA /* AlarmModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 637F709B266D0AEB00958FFA /* AlarmModel.swift */; };
 		63B3EAAD26285CEA008DB5C9 /* Spoqa Han Sans Neo Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 63B3EAAA26285CE9008DB5C9 /* Spoqa Han Sans Neo Regular.otf */; };
 		63B3EAAE26285CEA008DB5C9 /* Spoqa Han Sans Neo Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 63B3EAAB26285CEA008DB5C9 /* Spoqa Han Sans Neo Bold.otf */; };
 		63B3EAAF26285CEA008DB5C9 /* Spoqa Han Sans Neo Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = 63B3EAAC26285CEA008DB5C9 /* Spoqa Han Sans Neo Light.otf */; };
 		63B3EAB2262866CD008DB5C9 /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63B3EAB1262866CD008DB5C9 /* UIView+Extension.swift */; };
 		63B3EAB526286993008DB5C9 /* UITextField+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63B3EAB426286993008DB5C9 /* UITextField+Extension.swift */; };
+		63B8EC98267F5940002C9506 /* MissionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63B8EC97267F5940002C9506 /* MissionModel.swift */; };
 		63C3133526284B8100C30433 /* LoginByEmail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 63C3133426284B8100C30433 /* LoginByEmail.storyboard */; };
 		63C3133C26284CE200C30433 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63C3133B26284CE200C30433 /* UIColor+Extension.swift */; };
 		63C313482628519C00C30433 /* UIFont+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63C313472628519C00C30433 /* UIFont+Extension.swift */; };
@@ -37,11 +39,13 @@
 		6359924E2651113E005D96A4 /* AlarmCardCVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmCardCVC.swift; sourceTree = "<group>"; };
 		6359924F2651113E005D96A4 /* AlarmCardCVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AlarmCardCVC.xib; sourceTree = "<group>"; };
 		6379CD0626517D1E00F38E7F /* Date+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extension.swift"; sourceTree = "<group>"; };
+		637F709B266D0AEB00958FFA /* AlarmModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmModel.swift; sourceTree = "<group>"; };
 		63B3EAAA26285CE9008DB5C9 /* Spoqa Han Sans Neo Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Spoqa Han Sans Neo Regular.otf"; sourceTree = "<group>"; };
 		63B3EAAB26285CEA008DB5C9 /* Spoqa Han Sans Neo Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Spoqa Han Sans Neo Bold.otf"; sourceTree = "<group>"; };
 		63B3EAAC26285CEA008DB5C9 /* Spoqa Han Sans Neo Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Spoqa Han Sans Neo Light.otf"; sourceTree = "<group>"; };
 		63B3EAB1262866CD008DB5C9 /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
 		63B3EAB426286993008DB5C9 /* UITextField+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+Extension.swift"; sourceTree = "<group>"; };
+		63B8EC97267F5940002C9506 /* MissionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MissionModel.swift; sourceTree = "<group>"; };
 		63C3133426284B8100C30433 /* LoginByEmail.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LoginByEmail.storyboard; sourceTree = "<group>"; };
 		63C3133B26284CE200C30433 /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
 		63C313472628519C00C30433 /* UIFont+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+Extension.swift"; sourceTree = "<group>"; };
@@ -101,6 +105,15 @@
 				6359924F2651113E005D96A4 /* AlarmCardCVC.xib */,
 			);
 			path = Alarm;
+			sourceTree = "<group>";
+		};
+		637F709A266D0ADC00958FFA /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				637F709B266D0AEB00958FFA /* AlarmModel.swift */,
+				63B8EC97267F5940002C9506 /* MissionModel.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		63C31330262849F900C30433 /* Resources */ = {
@@ -200,6 +213,7 @@
 		63D910E52617224D008942A7 /* Wooly */ = {
 			isa = PBXGroup;
 			children = (
+				637F709A266D0ADC00958FFA /* Model */,
 				63D910F42617224F008942A7 /* Info.plist */,
 				63C3133326284A5D00C30433 /* AppDelegate */,
 				63C31330262849F900C30433 /* Resources */,
@@ -346,8 +360,10 @@
 				6379CD0726517D1E00F38E7F /* Date+Extension.swift in Sources */,
 				63D910E92617224D008942A7 /* SceneDelegate.swift in Sources */,
 				63C313482628519C00C30433 /* UIFont+Extension.swift in Sources */,
+				63B8EC98267F5940002C9506 /* MissionModel.swift in Sources */,
 				63C3133C26284CE200C30433 /* UIColor+Extension.swift in Sources */,
 				635992212647F54A005D96A4 /* AlarmMainVC.swift in Sources */,
+				637F709C266D0AEB00958FFA /* AlarmModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
