@@ -28,6 +28,8 @@
 		63D910EE2617224D008942A7 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 63D910EC2617224D008942A7 /* Login.storyboard */; };
 		63D910F02617224F008942A7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 63D910EF2617224F008942A7 /* Assets.xcassets */; };
 		63D910F32617224F008942A7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 63D910F12617224F008942A7 /* LaunchScreen.storyboard */; };
+		63E8269F2681D3F600421008 /* Scheduler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63E8269E2681D3F600421008 /* Scheduler.swift */; };
+		63E826A12681E26800421008 /* example.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 63E826A02681E26800421008 /* example.mp3 */; };
 		6F0B62EAA4F083D4902D242B /* Pods_Wooly.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F1ADDABA082776D27F8C9BD /* Pods_Wooly.framework */; };
 /* End PBXBuildFile section */
 
@@ -57,6 +59,8 @@
 		63D910EF2617224F008942A7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		63D910F22617224F008942A7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		63D910F42617224F008942A7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		63E8269E2681D3F600421008 /* Scheduler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Scheduler.swift; sourceTree = "<group>"; };
+		63E826A02681E26800421008 /* example.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = example.mp3; sourceTree = "<group>"; };
 		73F9517BA5125A7E7E459DED /* Pods-Wooly.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Wooly.debug.xcconfig"; path = "Target Support Files/Pods-Wooly/Pods-Wooly.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -119,6 +123,7 @@
 		63C31330262849F900C30433 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				63E826A02681E26800421008 /* example.mp3 */,
 				63C3133E2628506A00C30433 /* Font */,
 				63D910EF2617224F008942A7 /* Assets.xcassets */,
 			);
@@ -165,6 +170,7 @@
 		63C3133926284CBB00C30433 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				63E8269D2681D3DC00421008 /* Classes */,
 				63C3133A26284CD200C30433 /* Extension */,
 			);
 			path = Sources;
@@ -222,6 +228,14 @@
 				63C3133126284A0100C30433 /* View */,
 			);
 			path = Wooly;
+			sourceTree = "<group>";
+		};
+		63E8269D2681D3DC00421008 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				63E8269E2681D3F600421008 /* Scheduler.swift */,
+			);
+			path = Classes;
 			sourceTree = "<group>";
 		};
 		81CA80D9CFA69EC890B68DFC /* Frameworks */ = {
@@ -292,6 +306,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				63D910F32617224F008942A7 /* LaunchScreen.storyboard in Resources */,
+				63E826A12681E26800421008 /* example.mp3 in Resources */,
 				63B3EAAF26285CEA008DB5C9 /* Spoqa Han Sans Neo Light.otf in Resources */,
 				635992512651113E005D96A4 /* AlarmCardCVC.xib in Resources */,
 				63B3EAAD26285CEA008DB5C9 /* Spoqa Han Sans Neo Regular.otf in Resources */,
@@ -352,6 +367,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				63E8269F2681D3F600421008 /* Scheduler.swift in Sources */,
 				63B3EAB2262866CD008DB5C9 /* UIView+Extension.swift in Sources */,
 				635992502651113E005D96A4 /* AlarmCardCVC.swift in Sources */,
 				63D910EB2617224D008942A7 /* LoginByEmailVC.swift in Sources */,
