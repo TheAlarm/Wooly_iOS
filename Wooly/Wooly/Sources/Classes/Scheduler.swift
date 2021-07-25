@@ -33,8 +33,8 @@ class Scheduler{
         //MARK: TEST
         let intervalTrigger = UNTimeIntervalNotificationTrigger(timeInterval: 3.0, repeats: false)
         let calendarTrigger = UNCalendarNotificationTrigger(dateMatching: triggerDateComponents, repeats: triggerRepeats)
-        let request = UNNotificationRequest(identifier: requestIdentifier, content: content, trigger: intervalTrigger)
-//        let request = UNNotificationRequest(identifier: requestIdentifier, content: content, trigger: calendarTrigger)
+//        let request = UNNotificationRequest(identifier: requestIdentifier, content: content, trigger: intervalTrigger)
+        let request = UNNotificationRequest(identifier: requestIdentifier, content: content, trigger: calendarTrigger)
         
         center.add(request, withCompletionHandler: nil)
     }

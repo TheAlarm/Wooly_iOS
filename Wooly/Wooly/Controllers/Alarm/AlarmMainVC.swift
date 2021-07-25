@@ -48,8 +48,8 @@ class AlarmMainVC: UIViewController {
         setStyle()
         setNextAlarmMessage(time: nil)
         alarmCardCollectionView.register(alarmCardNib, forCellWithReuseIdentifier: "AlarmCardCVC")
-        var date = DateComponents(calendar: .current, timeZone: .current, era: nil, year: nil, month: nil, day: nil, hour: 20, minute: 8, second: nil, nanosecond: nil, weekday: nil, weekdayOrdinal: nil, quarter: nil, weekOfMonth: nil, weekOfYear: nil, yearForWeekOfYear: nil)
-        date.second = 10
+        var date = DateComponents()
+        date.second = 20
         let calendar = Calendar.current
         let tenSeconds = calendar.date(byAdding: date, to: Date())
         print(date)
