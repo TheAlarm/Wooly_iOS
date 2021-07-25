@@ -43,11 +43,18 @@ class AlarmMainVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         print("load")
-        alarmCardCollectionView.delegate = self
+        alarmCardCollectionView.delegate = self 
         alarmCardCollectionView.dataSource = self
         setStyle()
         setNextAlarmMessage(time: nil)
         alarmCardCollectionView.register(alarmCardNib, forCellWithReuseIdentifier: "AlarmCardCVC")
+        var date = DateComponents()
+        date.second = 20
+        let calendar = Calendar.current
+        let tenSeconds = calendar.date(byAdding: date, to: Date())
+        print(date)
+        Scheduler.shared.setUserNotification(memo: "이예슬최고😍", time: "저녁뭐먹지", triggerDateComponents: date, triggerRepeats: false, alarmIdentifier: "Alarm1")
+        Scheduler.shared.setUserNotification(memo: "이예슬최고😍", time: "저녁뭐먹지2", triggerDateComponents: date, triggerRepeats: false, alarmIdentifier: "Alarm2")
     }
     
     override func viewDidAppear(_ animated: Bool) {
