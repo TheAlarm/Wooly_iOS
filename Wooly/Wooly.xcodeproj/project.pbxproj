@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		634E4D1126B05BCC003B5BE8 /* CreateAlarm.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 634E4D1026B05BCC003B5BE8 /* CreateAlarm.storyboard */; };
 		634E4D1326B05DEE003B5BE8 /* CreateAlarmVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 634E4D1226B05DEE003B5BE8 /* CreateAlarmVC.swift */; };
+		634E4D1826B1AE1A003B5BE8 /* WeekdayCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 634E4D1626B1AE1A003B5BE8 /* WeekdayCVC.swift */; };
+		634E4D1926B1AE1A003B5BE8 /* WeekdayTVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 634E4D1726B1AE1A003B5BE8 /* WeekdayTVC.xib */; };
 		6359921E2647F522005D96A4 /* AlarmMain.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6359921D2647F522005D96A4 /* AlarmMain.storyboard */; };
 		635992212647F54A005D96A4 /* AlarmMainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635992202647F54A005D96A4 /* AlarmMainVC.swift */; };
 		635992502651113E005D96A4 /* AlarmCardCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6359924E2651113E005D96A4 /* AlarmCardCVC.swift */; };
@@ -40,6 +42,8 @@
 		1F1ADDABA082776D27F8C9BD /* Pods_Wooly.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Wooly.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		634E4D1026B05BCC003B5BE8 /* CreateAlarm.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CreateAlarm.storyboard; sourceTree = "<group>"; };
 		634E4D1226B05DEE003B5BE8 /* CreateAlarmVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAlarmVC.swift; sourceTree = "<group>"; };
+		634E4D1626B1AE1A003B5BE8 /* WeekdayCVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekdayCVC.swift; sourceTree = "<group>"; };
+		634E4D1726B1AE1A003B5BE8 /* WeekdayTVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WeekdayTVC.xib; sourceTree = "<group>"; };
 		6359921D2647F522005D96A4 /* AlarmMain.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AlarmMain.storyboard; sourceTree = "<group>"; };
 		635992202647F54A005D96A4 /* AlarmMainVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmMainVC.swift; sourceTree = "<group>"; };
 		6359924E2651113E005D96A4 /* AlarmCardCVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmCardCVC.swift; sourceTree = "<group>"; };
@@ -113,6 +117,8 @@
 				6359924E2651113E005D96A4 /* AlarmCardCVC.swift */,
 				6359924F2651113E005D96A4 /* AlarmCardCVC.xib */,
 				634E4D1026B05BCC003B5BE8 /* CreateAlarm.storyboard */,
+				634E4D1626B1AE1A003B5BE8 /* WeekdayCVC.swift */,
+				634E4D1726B1AE1A003B5BE8 /* WeekdayTVC.xib */,
 			);
 			path = Alarm;
 			sourceTree = "<group>";
@@ -313,6 +319,7 @@
 			files = (
 				63D910F32617224F008942A7 /* LaunchScreen.storyboard in Resources */,
 				63E826A12681E26800421008 /* example.mp3 in Resources */,
+				634E4D1926B1AE1A003B5BE8 /* WeekdayTVC.xib in Resources */,
 				63B3EAAF26285CEA008DB5C9 /* Spoqa Han Sans Neo Light.otf in Resources */,
 				635992512651113E005D96A4 /* AlarmCardCVC.xib in Resources */,
 				63B3EAAD26285CEA008DB5C9 /* Spoqa Han Sans Neo Regular.otf in Resources */,
@@ -387,6 +394,7 @@
 				63B8EC98267F5940002C9506 /* MissionModel.swift in Sources */,
 				63C3133C26284CE200C30433 /* UIColor+Extension.swift in Sources */,
 				635992212647F54A005D96A4 /* AlarmMainVC.swift in Sources */,
+				634E4D1826B1AE1A003B5BE8 /* WeekdayCVC.swift in Sources */,
 				637F709C266D0AEB00958FFA /* AlarmModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
