@@ -46,29 +46,29 @@ class LoginByEmailVC: UIViewController {
     }
     
     func setStyle(){
-        titleLabel.font = UIFont.notoSans(size: 20, family: .Bold)
+        titleLabel.font = UIFont.spoqaSans(size: 20, family: .Bold)
         let titleAttributedString = NSMutableAttributedString(string: titleLabel.text ?? "")
         titleAttributedString.addAttribute(.foregroundColor, value: UIColor.mainColor, range: (titleLabel.text as! NSString).range(of: "로그인"))
         titleLabel.attributedText = titleAttributedString
-        emailLabel.font = UIFont.notoSans(size: 16, family: .Regular)
+        emailLabel.font = UIFont.spoqaSans(size: 16, family: .Regular)
         
-        emailTextField.font = UIFont.notoSans(size: 16, family: .Regular)
+        emailTextField.font = UIFont.spoqaSans(size: 16, family: .Regular)
         emailTextField.borderStyle = .none
         emailTextField.backgroundColor = .lightBackground
         emailTextField.setBorder(borderColor: .lineGray, borderWidth: 1)
         emailTextField.makeRounded(cornerRadius: 3)
         emailTextField.addLeftPadding(left: textFieldPadding)
         
-        passwordLabel.font = UIFont.notoSans(size: 16, family: .Regular)
+        passwordLabel.font = UIFont.spoqaSans(size: 16, family: .Regular)
         
-        passwordTextField.font = UIFont.notoSans(size: 16, family: .Regular)
+        passwordTextField.font = UIFont.spoqaSans(size: 16, family: .Regular)
         passwordTextField.borderStyle = .none
         passwordTextField.backgroundColor = .lightBackground
         passwordTextField.setBorder(borderColor: .lineGray, borderWidth: 1)
         passwordTextField.makeRounded(cornerRadius: 3)
         passwordTextField.addLeftPadding(left: textFieldPadding)
         
-        passwordCountLabel.font = UIFont.notoSans(size: 12, family: .Regular)
+        passwordCountLabel.font = UIFont.spoqaSans(size: 12, family: .Regular)
         passwordCountLabel.textColor = .gray4
         
         passwordShowButton.setImage(UIImage(named:"btn_login_coverpassword"), for: .normal)
@@ -76,18 +76,18 @@ class LoginByEmailVC: UIViewController {
         
         dividerView.backgroundColor = .lineGray
         
-        loginButton.titleLabel?.font = UIFont.notoSans(size: 16, family: .Bold)
+        loginButton.titleLabel?.font = UIFont.spoqaSans(size: 16, family: .Bold)
         loginButton.backgroundColor = .mainColor
         loginButton.setTitleColor(.white, for: .normal)
         loginButton.makeRounded(cornerRadius: 22)
         
-        findPasswordButton.titleLabel?.font = UIFont.notoSans(size: 12, family: .Regular)
+        findPasswordButton.titleLabel?.font = UIFont.spoqaSans(size: 12, family: .Regular)
         findPasswordButton.setTitleColor(.gray1, for: .normal)
         
-        signUpLabel.font = UIFont.notoSans(size: 10, family: .Regular)
+        signUpLabel.font = UIFont.spoqaSans(size: 10, family: .Regular)
         signUpLabel.textColor = .gray3
         
-        signUpButton.titleLabel?.font = UIFont.notoSans(size: 16, family: .Bold)
+        signUpButton.titleLabel?.font = UIFont.spoqaSans(size: 16, family: .Bold)
         signUpButton.setTitleColor(.mainColor, for: .normal)
         signUpButton.setBorder(borderColor: .mainColor, borderWidth: 1)
         signUpButton.makeRounded(cornerRadius: 22)

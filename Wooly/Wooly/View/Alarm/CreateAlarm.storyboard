@@ -16,7 +16,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XvD-Eu-4LG">
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" contentInsetAdjustmentBehavior="always" translatesAutoresizingMaskIntoConstraints="NO" id="XvD-Eu-4LG">
                                 <rect key="frame" x="0.0" y="44" width="375" height="734"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="img_makealarm_bg_dongdong" translatesAutoresizingMaskIntoConstraints="NO" id="JIo-LB-3XB">
@@ -115,7 +115,6 @@
                                     <constraint firstItem="tf9-Ck-EB9" firstAttribute="leading" secondItem="XvD-Eu-4LG" secondAttribute="leading" id="dJn-lB-nAE"/>
                                     <constraint firstAttribute="trailing" secondItem="tf9-Ck-EB9" secondAttribute="trailing" id="eka-lQ-32N"/>
                                     <constraint firstItem="d2c-pB-4bt" firstAttribute="top" secondItem="XvD-Eu-4LG" secondAttribute="top" constant="94" id="faA-K5-KAv"/>
-                                    <constraint firstAttribute="bottom" secondItem="d2c-pB-4bt" secondAttribute="bottom" constant="500" id="iDE-BW-8jP"/>
                                     <constraint firstItem="d2c-pB-4bt" firstAttribute="centerX" secondItem="XvD-Eu-4LG" secondAttribute="centerX" id="zZr-PF-mfN"/>
                                 </constraints>
                             </scrollView>
@@ -131,10 +130,10 @@
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="XvD-Eu-4LG" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="5xQ-md-SXt"/>
+                            <constraint firstItem="XvD-Eu-4LG" firstAttribute="top" secondItem="5EZ-qb-Rvc" secondAttribute="top" id="5xQ-md-SXt"/>
                             <constraint firstItem="cjU-Oz-VjS" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="6YR-HX-KLK"/>
                             <constraint firstItem="XvD-Eu-4LG" firstAttribute="width" secondItem="vDu-zF-Fre" secondAttribute="width" id="9u2-Eo-UPA"/>
-                            <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="XvD-Eu-4LG" secondAttribute="bottom" id="CgZ-Uw-BNB"/>
+                            <constraint firstAttribute="bottom" secondItem="XvD-Eu-4LG" secondAttribute="bottom" id="CgZ-Uw-BNB"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="XvD-Eu-4LG" secondAttribute="trailing" id="QQt-6q-nB2"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="cjU-Oz-VjS" secondAttribute="trailing" constant="20" id="Zql-ZZ-c3U"/>
                             <constraint firstItem="XvD-Eu-4LG" firstAttribute="height" secondItem="vDu-zF-Fre" secondAttribute="height" id="baK-rz-rwF"/>

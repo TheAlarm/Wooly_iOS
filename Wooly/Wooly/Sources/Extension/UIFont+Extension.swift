@@ -13,7 +13,7 @@ extension UIFont {
     enum Family: String{
         case Bold, Regular, Light
     }
-    static func notoSans(size: CGFloat = 10, family: Family = .Regular) -> UIFont {
+    static func spoqaSans(size: CGFloat = 10, family: Family = .Regular) -> UIFont {
         return UIFont(name:"SpoqaHanSansNeo-\(family)", size: size)!
     }
     

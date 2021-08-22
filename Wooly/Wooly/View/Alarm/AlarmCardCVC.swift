@@ -22,13 +22,13 @@ class AlarmCardCVC: UICollectionViewCell {
         cardView.layer.cornerRadius = 15
         cardView.dropShadow(color: UIColor(red: 49/255, green: 64/255, blue: 73/255, alpha: 0.1), offSet: .init(width: 0, height: 0), opacity: 1, radius: 15)
         
-        ampmLabel.font = UIFont.notoSans(size: 18, family: .Light)
+        ampmLabel.font = UIFont.spoqaSans(size: 18, family: .Light)
         ampmLabel.textColor = .gray1
         
-        timeLabel.font = UIFont.notoSans(size: 33, family: .Bold)
+        timeLabel.font = UIFont.spoqaSans(size: 33, family: .Bold)
         timeLabel.textColor = .gray1
         
-        descLabel.font = UIFont.notoSans(size: 12, family: .Regular)
+        descLabel.font = UIFont.spoqaSans(size: 12, family: .Regular)
         descLabel.textColor = .gray1
         
         onoffSwitch.transform = CGAffineTransform.init(scaleX: 0.784, y: 0.784)
@@ -38,7 +38,7 @@ class AlarmCardCVC: UICollectionViewCell {
         cardBotttomView.layer.maskedCorners = [.layerMaxXMaxYCorner,.layerMinXMaxYCorner]
         cardBotttomView.backgroundColor = .paleGrey
         
-        weekdayLabel.font = UIFont.notoSans(size: 12, family: .Regular)
+        weekdayLabel.font = UIFont.spoqaSans(size: 12, family: .Regular)
         weekdayLabel.textColor = .gray1
     }
 
