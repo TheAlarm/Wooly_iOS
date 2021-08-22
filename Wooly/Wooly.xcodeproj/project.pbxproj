@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		634E4D1126B05BCC003B5BE8 /* CreateAlarm.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 634E4D1026B05BCC003B5BE8 /* CreateAlarm.storyboard */; };
+		634E4D1326B05DEE003B5BE8 /* CreateAlarmVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 634E4D1226B05DEE003B5BE8 /* CreateAlarmVC.swift */; };
+		634E4D1826B1AE1A003B5BE8 /* WeekdayCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 634E4D1626B1AE1A003B5BE8 /* WeekdayCVC.swift */; };
+		634E4D1926B1AE1A003B5BE8 /* WeekdayTVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 634E4D1726B1AE1A003B5BE8 /* WeekdayTVC.xib */; };
 		6359921E2647F522005D96A4 /* AlarmMain.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6359921D2647F522005D96A4 /* AlarmMain.storyboard */; };
 		635992212647F54A005D96A4 /* AlarmMainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635992202647F54A005D96A4 /* AlarmMainVC.swift */; };
 		635992502651113E005D96A4 /* AlarmCardCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6359924E2651113E005D96A4 /* AlarmCardCVC.swift */; };
@@ -19,6 +23,7 @@
 		63B3EAB2262866CD008DB5C9 /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63B3EAB1262866CD008DB5C9 /* UIView+Extension.swift */; };
 		63B3EAB526286993008DB5C9 /* UITextField+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63B3EAB426286993008DB5C9 /* UITextField+Extension.swift */; };
 		63B8EC98267F5940002C9506 /* MissionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63B8EC97267F5940002C9506 /* MissionModel.swift */; };
+		63C1365526BF8E9A00C6D6B8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 63C1365426BF8E9A00C6D6B8 /* Assets.xcassets */; };
 		63C3133526284B8100C30433 /* LoginByEmail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 63C3133426284B8100C30433 /* LoginByEmail.storyboard */; };
 		63C3133C26284CE200C30433 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63C3133B26284CE200C30433 /* UIColor+Extension.swift */; };
 		63C313482628519C00C30433 /* UIFont+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63C313472628519C00C30433 /* UIFont+Extension.swift */; };
@@ -26,7 +31,6 @@
 		63D910E92617224D008942A7 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63D910E82617224D008942A7 /* SceneDelegate.swift */; };
 		63D910EB2617224D008942A7 /* LoginByEmailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63D910EA2617224D008942A7 /* LoginByEmailVC.swift */; };
 		63D910EE2617224D008942A7 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 63D910EC2617224D008942A7 /* Login.storyboard */; };
-		63D910F02617224F008942A7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 63D910EF2617224F008942A7 /* Assets.xcassets */; };
 		63D910F32617224F008942A7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 63D910F12617224F008942A7 /* LaunchScreen.storyboard */; };
 		63E8269F2681D3F600421008 /* Scheduler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63E8269E2681D3F600421008 /* Scheduler.swift */; };
 		63E826A12681E26800421008 /* example.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 63E826A02681E26800421008 /* example.mp3 */; };
@@ -36,6 +40,10 @@
 /* Begin PBXFileReference section */
 		08C1EC575730892CC42C4536 /* Pods-Wooly.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Wooly.release.xcconfig"; path = "Target Support Files/Pods-Wooly/Pods-Wooly.release.xcconfig"; sourceTree = "<group>"; };
 		1F1ADDABA082776D27F8C9BD /* Pods_Wooly.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Wooly.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		634E4D1026B05BCC003B5BE8 /* CreateAlarm.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CreateAlarm.storyboard; sourceTree = "<group>"; };
+		634E4D1226B05DEE003B5BE8 /* CreateAlarmVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAlarmVC.swift; sourceTree = "<group>"; };
+		634E4D1626B1AE1A003B5BE8 /* WeekdayCVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekdayCVC.swift; sourceTree = "<group>"; };
+		634E4D1726B1AE1A003B5BE8 /* WeekdayTVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WeekdayTVC.xib; sourceTree = "<group>"; };
 		6359921D2647F522005D96A4 /* AlarmMain.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AlarmMain.storyboard; sourceTree = "<group>"; };
 		635992202647F54A005D96A4 /* AlarmMainVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmMainVC.swift; sourceTree = "<group>"; };
 		6359924E2651113E005D96A4 /* AlarmCardCVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmCardCVC.swift; sourceTree = "<group>"; };
@@ -48,6 +56,7 @@
 		63B3EAB1262866CD008DB5C9 /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
 		63B3EAB426286993008DB5C9 /* UITextField+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+Extension.swift"; sourceTree = "<group>"; };
 		63B8EC97267F5940002C9506 /* MissionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MissionModel.swift; sourceTree = "<group>"; };
+		63C1365426BF8E9A00C6D6B8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		63C3133426284B8100C30433 /* LoginByEmail.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LoginByEmail.storyboard; sourceTree = "<group>"; };
 		63C3133B26284CE200C30433 /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
 		63C313472628519C00C30433 /* UIFont+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+Extension.swift"; sourceTree = "<group>"; };
@@ -56,7 +65,6 @@
 		63D910E82617224D008942A7 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		63D910EA2617224D008942A7 /* LoginByEmailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginByEmailVC.swift; sourceTree = "<group>"; };
 		63D910ED2617224D008942A7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Login.storyboard; sourceTree = "<group>"; };
-		63D910EF2617224F008942A7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		63D910F22617224F008942A7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		63D910F42617224F008942A7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		63E8269E2681D3F600421008 /* Scheduler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Scheduler.swift; sourceTree = "<group>"; };
@@ -97,6 +105,7 @@
 			isa = PBXGroup;
 			children = (
 				635992202647F54A005D96A4 /* AlarmMainVC.swift */,
+				634E4D1226B05DEE003B5BE8 /* CreateAlarmVC.swift */,
 			);
 			path = Alarm;
 			sourceTree = "<group>";
@@ -107,6 +116,9 @@
 				6359921D2647F522005D96A4 /* AlarmMain.storyboard */,
 				6359924E2651113E005D96A4 /* AlarmCardCVC.swift */,
 				6359924F2651113E005D96A4 /* AlarmCardCVC.xib */,
+				634E4D1026B05BCC003B5BE8 /* CreateAlarm.storyboard */,
+				634E4D1626B1AE1A003B5BE8 /* WeekdayCVC.swift */,
+				634E4D1726B1AE1A003B5BE8 /* WeekdayTVC.xib */,
 			);
 			path = Alarm;
 			sourceTree = "<group>";
@@ -123,9 +135,9 @@
 		63C31330262849F900C30433 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				63C1365426BF8E9A00C6D6B8 /* Assets.xcassets */,
 				63E826A02681E26800421008 /* example.mp3 */,
 				63C3133E2628506A00C30433 /* Font */,
-				63D910EF2617224F008942A7 /* Assets.xcassets */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -307,13 +319,15 @@
 			files = (
 				63D910F32617224F008942A7 /* LaunchScreen.storyboard in Resources */,
 				63E826A12681E26800421008 /* example.mp3 in Resources */,
+				634E4D1926B1AE1A003B5BE8 /* WeekdayTVC.xib in Resources */,
 				63B3EAAF26285CEA008DB5C9 /* Spoqa Han Sans Neo Light.otf in Resources */,
 				635992512651113E005D96A4 /* AlarmCardCVC.xib in Resources */,
 				63B3EAAD26285CEA008DB5C9 /* Spoqa Han Sans Neo Regular.otf in Resources */,
-				63D910F02617224F008942A7 /* Assets.xcassets in Resources */,
 				63B3EAAE26285CEA008DB5C9 /* Spoqa Han Sans Neo Bold.otf in Resources */,
 				6359921E2647F522005D96A4 /* AlarmMain.storyboard in Resources */,
+				634E4D1126B05BCC003B5BE8 /* CreateAlarm.storyboard in Resources */,
 				63C3133526284B8100C30433 /* LoginByEmail.storyboard in Resources */,
+				63C1365526BF8E9A00C6D6B8 /* Assets.xcassets in Resources */,
 				63D910EE2617224D008942A7 /* Login.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -373,12 +387,14 @@
 				63D910EB2617224D008942A7 /* LoginByEmailVC.swift in Sources */,
 				63B3EAB526286993008DB5C9 /* UITextField+Extension.swift in Sources */,
 				63D910E72617224D008942A7 /* AppDelegate.swift in Sources */,
+				634E4D1326B05DEE003B5BE8 /* CreateAlarmVC.swift in Sources */,
 				6379CD0726517D1E00F38E7F /* Date+Extension.swift in Sources */,
 				63D910E92617224D008942A7 /* SceneDelegate.swift in Sources */,
 				63C313482628519C00C30433 /* UIFont+Extension.swift in Sources */,
 				63B8EC98267F5940002C9506 /* MissionModel.swift in Sources */,
 				63C3133C26284CE200C30433 /* UIColor+Extension.swift in Sources */,
 				635992212647F54A005D96A4 /* AlarmMainVC.swift in Sources */,
+				634E4D1826B1AE1A003B5BE8 /* WeekdayCVC.swift in Sources */,
 				637F709C266D0AEB00958FFA /* AlarmModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

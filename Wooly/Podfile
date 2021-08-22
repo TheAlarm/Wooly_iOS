@@ -6,5 +6,7 @@ target 'Wooly' do
   use_frameworks!
 
   # Pods for Wooly
+  pod 'SnapKit'
+  pod 'Then'
   pod 'Alamofire', '~> 5.2.2'
 end
