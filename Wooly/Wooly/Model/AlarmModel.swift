@@ -6,9 +6,9 @@
 //
 
 import Foundation
-import MediaPlayer
+//import MediaPlayer
 
-struct Alarm{
+struct Alarm: Codable{
     var date: Date = Date()
     var enabled: Bool = false
     var snoozeEnabled: Bool = false
@@ -17,15 +17,20 @@ struct Alarm{
     var mediaID: String = ""
     var mediaLabel: String = "bell"
     var label: String = "Alarm"
-    var mission: MissionModel
-    var holidayExcepted: Bool = false
-    var specificDayExcepted: Bool = false
+    var mission: MissionType
+    var holidayExcepted: Bool? = false
+    var specificDayExcepted: Bool? = false
     var ringType: RingType
     var memo: String
     
 }
 
-enum RingType{
+enum RingType: String,Codable{
     case bell
     case vibration
+}
+
+enum MissionType: String,Codable{
+    case none
+    case promise
 }

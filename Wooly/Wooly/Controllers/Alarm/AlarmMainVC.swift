@@ -8,7 +8,7 @@
 import UIKit
 
 class AlarmMainVC: UIViewController {
-    
+    let userDefaults = UserDefaults.standard
     //MARK: - Custom Properties
     let screenBounds = UIScreen.main.bounds
     let defaultViewWidth: CGFloat = 375
@@ -42,7 +42,7 @@ class AlarmMainVC: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("load")
+//        print("load")
         alarmCardCollectionView.delegate = self 
         alarmCardCollectionView.dataSource = self
         setStyle()
@@ -52,14 +52,19 @@ class AlarmMainVC: UIViewController {
         date.second = 20
         let calendar = Calendar.current
         let tenSeconds = calendar.date(byAdding: date, to: Date())
-        print(date)
-        Scheduler.shared.setUserNotification(memo: "이예슬최고😍", time: "저녁뭐먹지", triggerDateComponents: date, triggerRepeats: false, alarmIdentifier: "Alarm1")
-        Scheduler.shared.setUserNotification(memo: "이예슬최고😍", time: "저녁뭐먹지2", triggerDateComponents: date, triggerRepeats: false, alarmIdentifier: "Alarm2")
+//        var alarmList = Array<Alarm>()
+//        alarmList.append(Alarm(date: Date(), enabled: true, snoozeEnabled: true, repeatWeekdays: [0,1,2], uuid: UUID().uuidString, mediaID: "", mediaLabel: "", label: "", mission: .none, holidayExcepted: nil, specificDayExcepted: nil, ringType: .bell, memo: ""))
+//        alarmList.append(Alarm(date: Date(), enabled: true, snoozeEnabled: true, repeatWeekdays: [0,1,2], uuid: UUID().uuidString, mediaID: "", mediaLabel: "", label: "", mission: .none, holidayExcepted: nil, specificDayExcepted: nil, ringType: .bell, memo: ""))
+//
+//        userDefaults.setObjectList(alarmList, forKey: "AlarmList")
+//        let l = userDefaults.getObjectList(Alarm.self, forKey: "AlarmList")
+//        print(l,type(of: l))
+//        Scheduler.shared.setUserNotification(memo: "이예슬최고😍", time: "저녁뭐먹지", triggerDateComponents: date, triggerRepeats: false, alarmIdentifier: "Alarm1")
+//        Scheduler.shared.setUserNotification(memo: "이예슬최고😍", time: "저녁뭐먹지2", triggerDateComponents: date, triggerRepeats: false, alarmIdentifier: "Alarm2")
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
-        print("appear")
         nextAlarmTime = Date()
         
     }
