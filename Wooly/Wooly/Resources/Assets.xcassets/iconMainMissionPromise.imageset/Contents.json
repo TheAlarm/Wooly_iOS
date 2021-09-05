@@ -1,19 +1,19 @@
 {
   "images" : [
     {
-      "scale" : "1x",
-      "filename" : "iconMainMissionAlarm.png",
-      "idiom" : "universal"
+      "idiom" : "universal",
+      "filename" : "iconMainMissionPromise.png",
+      "scale" : "1x"
     },
     {
-      "filename" : "iconMainMissionAlarm@2x.png",
+      "filename" : "iconMainMissionPromise@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
       "scale" : "3x",
       "idiom" : "universal",
-      "filename" : "iconMainMissionAlarm@3x.png"
+      "filename" : "iconMainMissionPromise@3x.png"
     }
   ],
   "info" : {

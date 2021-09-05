@@ -17,11 +17,11 @@ struct Alarm: Codable{
     var mediaID: String = ""
     var mediaLabel: String = "bell"
     var label: String = "Alarm"
-    var mission: MissionType
+    var mission: MissionType = .none
     var holidayExcepted: Bool? = false
     var specificDayExcepted: Bool? = false
-    var ringType: RingType
-    var memo: String
+    var ringType: [RingType] = []
+    var memo: String = ""
     
 }
 

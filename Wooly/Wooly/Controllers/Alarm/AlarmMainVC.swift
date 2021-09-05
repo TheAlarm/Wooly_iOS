@@ -54,14 +54,15 @@ class AlarmMainVC: UIViewController {
         let tenSeconds = calendar.date(byAdding: date, to: Date())
         
 //        var alarmList = Array<Alarm>()
-//        alarmList.append(Alarm(date: Date(), enabled: true, snoozeEnabled: true, repeatWeekdays: [0,1,2], uuid: UUID().uuidString, mediaID: "", mediaLabel: "", label: "", mission: .none, holidayExcepted: nil, specificDayExcepted: nil, ringType: .bell, memo: ""))
-//        alarmList.append(Alarm(date: Date(), enabled: true, snoozeEnabled: true, repeatWeekdays: [0,1,2], uuid: UUID().uuidString, mediaID: "", mediaLabel: "", label: "", mission: .none, holidayExcepted: nil, specificDayExcepted: nil, ringType: .bell, memo: ""))
-//
+//        alarmList.append(Alarm(date: Date(), enabled: true, snoozeEnabled: true, repeatWeekdays: [0,2,4], uuid: UUID().uuidString, mediaID: "", mediaLabel: "", label: "", mission: .none, holidayExcepted: nil, specificDayExcepted: nil, ringType: [.bell], memo: "테스트"))
+//        alarmList.append(Alarm(date: Date(), enabled: true, snoozeEnabled: true, repeatWeekdays: [0,1,2,3,4,5,6], uuid: UUID().uuidString, mediaID: "", mediaLabel: "", label: "", mission: .promise, holidayExcepted: nil, specificDayExcepted: nil, ringType: [.bell], memo: "하는중💦"))
 //        userDefaults.setObjectList(alarmList, forKey: "AlarmList")
-//        let l = userDefaults.getObjectList(Alarm.self, forKey: "AlarmList")
+//        alarmList = userDefaults.getObjectList(Alarm.self, forKey: "AlarmList") ?? Array<Alarm>()
 //        print(l,type(of: l))
 //        Scheduler.shared.setUserNotification(memo: "이예슬최고😍", time: "저녁뭐먹지", triggerDateComponents: date, triggerRepeats: false, alarmIdentifier: "Alarm1")
 //        Scheduler.shared.setUserNotification(memo: "이예슬최고😍", time: "저녁뭐먹지2", triggerDateComponents: date, triggerRepeats: false, alarmIdentifier: "Alarm2")
+        loadAlarmList()
+        alarmCardCollectionView.reloadData()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -116,7 +117,7 @@ class AlarmMainVC: UIViewController {
         }
     }
     func loadAlarmList(){
-        alarmList = userDefaults.getObjectList(Alarm.self, forKey: "AlarmList") ?? []
+        alarmList = userDefaults.getObjectList(Alarm.self, forKey: "AlarmList") ?? Array<Alarm>()
     }
     func setAlarmList(){
         userDefaults.setObjectList(alarmList, forKey: "AlarmList")
@@ -157,7 +158,9 @@ extension AlarmMainVC: UICollectionViewDataSource{
     
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "AlarmCardCVC", for: indexPath)
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "AlarmCardCVC", for: indexPath) as? AlarmCardCVC else { return UICollectionViewCell() }
+        cell.alarmInfo = alarmList[indexPath.item]
+        cell.setAlarmCardData()
         return cell
     }
     

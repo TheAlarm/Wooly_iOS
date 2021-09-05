@@ -157,7 +157,7 @@ class AddAlarmVC: UIViewController {
         weekdayCollectionView.dataSource = self
         weekdayCollectionView.collectionViewLayout = layout
         weekdayCollectionView.register(WeekdayCVC.self,forCellWithReuseIdentifier: WeekdayCVC.identifier)
-        
+        datePicker.addTarget(self, action: #selector(donePicker(sender:)), for: .valueChanged)
 
     }
     func setStyle(){
@@ -383,15 +383,22 @@ class AddAlarmVC: UIViewController {
         
         
     }
-    @objc func holidayExceptionViewDidTap(sender: UIView){
+    @objc func holidayExceptionViewDidTap(sender: UIView) {
         
     }
-    @objc func bellTypeSoundButtonDidTap(sender: UIButton){
+    @objc func bellTypeSoundButtonDidTap(sender: UIButton) {
         sender.isSelected = !sender.isSelected
     }
-    @objc func bellTypeVibButtonDidTap(sender: UIButton){
+    @objc func bellTypeVibButtonDidTap(sender: UIButton) {
         sender.isSelected = !sender.isSelected
     }
+    @objc func donePicker(sender: UIDatePicker) {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "YY-MM-dd HH:mm"
+        dateFormatter.locale = Locale(identifier: "ko-KR")
+        print(dateFormatter.string(from: sender.date))
+    }
+    
 }
 
 class GrayLine: UIView {
