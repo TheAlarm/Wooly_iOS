@@ -27,7 +27,7 @@ class AlarmMainVC: UIViewController {
         
     }
     var nextAlarmState: NextAlarm = .empty
-    var alarmList = ["10:30","12:58","10:30","12:58","10:30","12:58","10:30","12:58","10:30","12:58"]
+    var alarmList: Array<Alarm> = []
     
     //MARK: - IBOutlets
     
@@ -52,6 +52,7 @@ class AlarmMainVC: UIViewController {
         date.second = 20
         let calendar = Calendar.current
         let tenSeconds = calendar.date(byAdding: date, to: Date())
+        
 //        var alarmList = Array<Alarm>()
 //        alarmList.append(Alarm(date: Date(), enabled: true, snoozeEnabled: true, repeatWeekdays: [0,1,2], uuid: UUID().uuidString, mediaID: "", mediaLabel: "", label: "", mission: .none, holidayExcepted: nil, specificDayExcepted: nil, ringType: .bell, memo: ""))
 //        alarmList.append(Alarm(date: Date(), enabled: true, snoozeEnabled: true, repeatWeekdays: [0,1,2], uuid: UUID().uuidString, mediaID: "", mediaLabel: "", label: "", mission: .none, holidayExcepted: nil, specificDayExcepted: nil, ringType: .bell, memo: ""))
@@ -68,6 +69,16 @@ class AlarmMainVC: UIViewController {
         nextAlarmTime = Date()
         
     }
+    
+    @IBAction func addAlarmButtonDidTap(_ sender: Any) {
+        let addAlarmSB = UIStoryboard(name: "AddAlarm", bundle: nil)
+        let addAlarmVC = addAlarmSB.instantiateViewController(withIdentifier: "AddAlarmVC")
+        addAlarmVC.modalPresentationStyle = .fullScreen
+        self.present(addAlarmVC,animated: true)
+        
+    }
+    
+    
     func setStyle(){
         purpleBackgroundView.backgroundColor = .mainPur
         purpleBackgroundView.clipsToBounds = true
@@ -103,6 +114,12 @@ class AlarmMainVC: UIViewController {
             attributedString.addAttribute(.font, value: UIFont.spoqaSans(size: 24, family: .Light), range: attributedString.mutableString.range(of: "남았어요"))
             nextAlarmMessageBigLabel.attributedText = attributedString
         }
+    }
+    func loadAlarmList(){
+        alarmList = userDefaults.getObjectList(Alarm.self, forKey: "AlarmList") ?? []
+    }
+    func setAlarmList(){
+        userDefaults.setObjectList(alarmList, forKey: "AlarmList")
     }
 }
 

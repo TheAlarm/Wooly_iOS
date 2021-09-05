@@ -12,7 +12,7 @@ import UIKit
 let screenBounds = UIScreen.main.bounds
 let defaultWidth = 375
 
-class CreateAlarmVC: UIViewController {
+class AddAlarmVC: UIViewController {
     
     let weekdayList = ["일","월","화","수","목","금","토"]
     let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout().then {
@@ -433,7 +433,7 @@ class TableTitleLabel: UILabel {
     
 }
 
-extension CreateAlarmVC: UICollectionViewDelegateFlowLayout, UICollectionViewDataSource{
+extension AddAlarmVC: UICollectionViewDelegateFlowLayout, UICollectionViewDataSource{
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return weekdayList.count
     }
