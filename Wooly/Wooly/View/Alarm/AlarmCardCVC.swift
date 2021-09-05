@@ -100,25 +100,29 @@ class AlarmCardCVC: UICollectionViewCell {
             UIView.animate(withDuration: 0.15){
                 self.cardView.backgroundColor = .white
                 self.cardBotttomView.backgroundColor = .paleGrey
+            }
+            UIView.transition(with: self.missionImageView, duration: 0.15, options: .transitionCrossDissolve, animations: {
                 switch self.alarmInfo!.mission {
                     case .none:
                         self.missionImageView.image = self.alarmOnImage
                     case .promise:
                         self.missionImageView.image = self.promiseOnImage
                 }
-            }
+            })
         }
         else {
             UIView.animate(withDuration: 0.15){
                 self.cardView.backgroundColor = UIColor(red: 224/255, green: 228/255, blue: 236/255, alpha: 1)
                 self.cardBotttomView.backgroundColor = UIColor(red: 0.87, green: 0.88, blue: 0.92, alpha: 1)
+            }
+            UIView.transition(with: self.missionImageView, duration: 0.15, options: .transitionCrossDissolve, animations: {
                 switch self.alarmInfo!.mission {
                     case .none:
                         self.missionImageView.image = self.alarmOffImage
                     case .promise:
                         self.missionImageView.image = self.promiseOffImage
                 }
-            }
+            })
         }
     }
     @IBAction func alarmSwitchDidTap(_ sender: UISwitch) {
