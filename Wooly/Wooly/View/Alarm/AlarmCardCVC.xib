@@ -28,6 +28,9 @@
                             </label>
                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="RQb-Ld-eCS">
                                 <rect key="frame" x="109" y="9.5" width="51" height="31"/>
+                                <connections>
+                                    <action selector="alarmSwitchDidTap:" destination="gTV-IL-0wX" eventType="valueChanged" id="o93-Wd-Che"/>
+                                </connections>
                             </switch>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="08:20" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tY1-xJ-mGp">
                                 <rect key="frame" x="12" y="37.5" width="90" height="49"/>
@@ -51,7 +54,7 @@
                             <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fjq-hc-5rf">
                                 <rect key="frame" x="0.0" y="161" width="164" height="57"/>
                                 <subviews>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="iconMainMissionAlarm" translatesAutoresizingMaskIntoConstraints="NO" id="pos-nP-Xu6">
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="pos-nP-Xu6">
                                         <rect key="frame" x="115" y="8" width="40" height="40"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="pos-nP-Xu6" secondAttribute="height" multiplier="1:1" id="PlZ-mS-4fE"/>
@@ -69,13 +72,13 @@
                                     <constraint firstAttribute="width" secondItem="fjq-hc-5rf" secondAttribute="height" multiplier="164:57" id="G1U-9R-oVR"/>
                                     <constraint firstItem="P35-Vp-E7Q" firstAttribute="centerY" secondItem="fjq-hc-5rf" secondAttribute="centerY" id="Vct-TQ-WOP"/>
                                     <constraint firstItem="pos-nP-Xu6" firstAttribute="top" secondItem="fjq-hc-5rf" secondAttribute="top" constant="8" id="dIK-Qp-i4l"/>
+                                    <constraint firstAttribute="bottom" secondItem="pos-nP-Xu6" secondAttribute="bottom" constant="9" id="g3K-E9-xII"/>
                                     <constraint firstAttribute="trailing" secondItem="pos-nP-Xu6" secondAttribute="trailing" constant="9" id="gaR-uk-b8C"/>
-                                    <constraint firstAttribute="bottom" secondItem="pos-nP-Xu6" secondAttribute="bottom" constant="9" id="xE0-VT-622"/>
                                     <constraint firstItem="P35-Vp-E7Q" firstAttribute="leading" secondItem="fjq-hc-5rf" secondAttribute="leading" constant="12" id="ydx-jD-kpO"/>
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iBc-dz-Pb6">
-                                <rect key="frame" x="121" y="136" width="25" height="25"/>
+                                <rect key="frame" x="130" y="136" width="25" height="25"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="25" id="VlP-mT-MGd"/>
                                     <constraint firstAttribute="width" constant="25" id="mxB-Cj-GtS"/>
@@ -85,7 +88,7 @@
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="iBc-dz-Pb6" secondAttribute="trailing" constant="18" id="Ab7-td-1dj"/>
+                            <constraint firstAttribute="trailing" secondItem="iBc-dz-Pb6" secondAttribute="trailing" constant="9" id="Ab7-td-1dj"/>
                             <constraint firstItem="fjq-hc-5rf" firstAttribute="width" secondItem="3DL-yb-UCy" secondAttribute="width" id="Grp-11-dWU"/>
                             <constraint firstItem="fjq-hc-5rf" firstAttribute="top" secondItem="iBc-dz-Pb6" secondAttribute="bottom" id="OPO-1T-Wm4"/>
                             <constraint firstItem="tY1-xJ-mGp" firstAttribute="top" secondItem="RIj-fd-RBQ" secondAttribute="bottom" constant="2" id="Yw8-3K-lHc"/>
@@ -116,7 +119,7 @@
                 <outlet property="ampmLabel" destination="RIj-fd-RBQ" id="ua4-gz-v5Z"/>
                 <outlet property="cardBotttomView" destination="fjq-hc-5rf" id="coQ-Db-v1L"/>
                 <outlet property="cardView" destination="3DL-yb-UCy" id="Ayw-mz-rjg"/>
-                <outlet property="descLabel" destination="Xbw-r1-sMQ" id="kVH-dd-c7I"/>
+                <outlet property="memoLabel" destination="Xbw-r1-sMQ" id="wOG-kS-A2w"/>
                 <outlet property="missionImageView" destination="pos-nP-Xu6" id="hei-Qa-cWh"/>
                 <outlet property="onoffSwitch" destination="RQb-Ld-eCS" id="9sM-hJ-QqF"/>
                 <outlet property="timeLabel" destination="tY1-xJ-mGp" id="Nzr-lu-nIy"/>
@@ -127,7 +130,6 @@
     </objects>
     <resources>
         <image name="btnMainMore" width="25" height="25"/>
-        <image name="iconMainMissionAlarm" width="40" height="40"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

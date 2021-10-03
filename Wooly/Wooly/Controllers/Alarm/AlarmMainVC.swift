@@ -8,7 +8,7 @@
 import UIKit
 
 class AlarmMainVC: UIViewController {
-    
+    let userDefaults = UserDefaults.standard
     //MARK: - Custom Properties
     let screenBounds = UIScreen.main.bounds
     let defaultViewWidth: CGFloat = 375
@@ -16,18 +16,25 @@ class AlarmMainVC: UIViewController {
     let nextAlarmMessageEmptyString: String = "등록된 알람이 없어요."
     let nextAlarmMessageString: String = ""
     let alarmCardNib = UINib(nibName: "AlarmCardCVC", bundle: nil)
-    var nextAlarmTime: Date? = nil {
+    let alarms = Alarms.shared
+    var nextAlarmTimer: Timer?
+    
+    var nextAlarmMinute: Int? = nil {
         didSet{
-            let hasNext = nextAlarmTime != nil
+            let hasNext = nextAlarmMinute != nil
             nextAlarmMessageSmallLabel.isHidden = !hasNext
             nextAlarmMessageBigLabel.isHidden = !hasNext
             nextAlarmMessageEmptyLabel.isHidden = hasNext
-            setNextAlarmMessage(time: nextAlarmTime)
+            setNextAlarmMessage(time: nextAlarmMinute)
+            if hasNext {
+                startTimer()
+            } else {
+                stopTimer()
+            }
         }
         
     }
-    var nextAlarmState: NextAlarm = .empty
-    var alarmList = ["10:30","12:58","10:30","12:58","10:30","12:58","10:30","12:58","10:30","12:58"]
+    let appdelegate = UIApplication.shared.delegate
     
     //MARK: - IBOutlets
     
@@ -42,26 +49,45 @@ class AlarmMainVC: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("load")
-        alarmCardCollectionView.delegate = self 
+        alarmCardCollectionView.delegate = self
         alarmCardCollectionView.dataSource = self
         setStyle()
         setNextAlarmMessage(time: nil)
         alarmCardCollectionView.register(alarmCardNib, forCellWithReuseIdentifier: "AlarmCardCVC")
-        var date = DateComponents()
-        date.second = 20
-        let calendar = Calendar.current
-        let tenSeconds = calendar.date(byAdding: date, to: Date())
-        print(date)
-        Scheduler.shared.setUserNotification(memo: "이예슬최고😍", time: "저녁뭐먹지", triggerDateComponents: date, triggerRepeats: false, alarmIdentifier: "Alarm1")
-        Scheduler.shared.setUserNotification(memo: "이예슬최고😍", time: "저녁뭐먹지2", triggerDateComponents: date, triggerRepeats: false, alarmIdentifier: "Alarm2")
+        Alarms.shared.alarmsChangedClosure = {
+            self.updateNextAlarmRemainingMinute()
+        }
+
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(true)
-        print("appear")
-        nextAlarmTime = Date()
-        
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        updateNextAlarmRemainingMinute()
+        alarmCardCollectionView.reloadData()
+    }
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(true)
+        stopTimer()
+    }
+    
+    func startTimer() -> Bool{
+        if nextAlarmMinute == nil {
+            return false
+        }
+        if nextAlarmTimer != nil && nextAlarmTimer!.isValid {
+            nextAlarmTimer!.invalidate()
+        }
+        nextAlarmTimer = Timer.scheduledTimer(withTimeInterval: 5, repeats: true){ _ in
+            print("timer")
+            self.updateNextAlarmRemainingMinute()
+        }
+        return true
+    }
+    func stopTimer(){
+        if nextAlarmTimer != nil {
+            nextAlarmTimer!.invalidate()
+            nextAlarmTimer = nil
+        }
     }
     func setStyle(){
         purpleBackgroundView.backgroundColor = .mainPur
@@ -91,14 +117,34 @@ class AlarmMainVC: UIViewController {
         
 
     }
-    func setNextAlarmMessage(time: Date?){
-        if time != nil{
-            let timeString = time!.getTimeString()
-            let attributedString = NSMutableAttributedString(string: "\(timeString) 남았어요")
+    func setNextAlarmMessage(time: Int?){
+        if let time = time{
+            var hourString = ""
+            var minuteString = ""
+            let hour = time / 60
+            let minute = time % 60
+            if hour != 0 {
+                hourString = "\(hour)시간 "
+            }
+            if minute != 0 {
+                minuteString = "\(minute)분 "
+            }
+            let attributedString = NSMutableAttributedString(string: "\(hourString)\(minuteString)남았어요")
             attributedString.addAttribute(.font, value: UIFont.spoqaSans(size: 24, family: .Light), range: attributedString.mutableString.range(of: "남았어요"))
             nextAlarmMessageBigLabel.attributedText = attributedString
         }
     }
+    func updateNextAlarmRemainingMinute() {
+        self.nextAlarmMinute = Alarms.shared.nextAlarm?.remainingMinute
+    }
+    
+    @IBAction func addAlarmButtonDidTap(_ sender: Any) {
+        let addAlarmSB = UIStoryboard(name: "AddAlarm", bundle: nil)
+        let addAlarmVC = addAlarmSB.instantiateViewController(withIdentifier: "AddAlarmVC")
+        let nc = AddAlarmNC(rootViewController: addAlarmVC)
+        self.present(nc,animated: true)
+    }
+    
 }
 
 extension AlarmMainVC: UICollectionViewDelegateFlowLayout{
@@ -124,18 +170,29 @@ extension AlarmMainVC: UICollectionViewDelegateFlowLayout{
         }
         
     }
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let cell = collectionView.cellForItem(at: indexPath) as? AlarmCardCVC
+        let alarm = cell?.alarmInfo
+        let addAlarmSB = UIStoryboard(name: "AddAlarm", bundle: nil)
+        let addAlarmVC = addAlarmSB.instantiateViewController(withIdentifier: "AddAlarmVC") as! AddAlarmVC
+        addAlarmVC.existingAlarm = alarm
+        let nc = AddAlarmNC(rootViewController: addAlarmVC)
+        self.present(nc, animated: true)
+    }
     
 }
 
 extension AlarmMainVC: UICollectionViewDataSource{
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return alarmList.count
+        return Alarms.shared.alarms.count
     }
 
     
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "AlarmCardCVC", for: indexPath)
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "AlarmCardCVC", for: indexPath) as? AlarmCardCVC else { return UICollectionViewCell() }
+        cell.alarmInfo = Alarms.shared.alarms[indexPath.item]
+        cell.setAlarmCardData()
         return cell
     }
     

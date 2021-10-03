@@ -115,6 +115,9 @@
                                     <constraint firstAttribute="width" constant="62" id="bVA-k6-3t0"/>
                                 </constraints>
                                 <state key="normal" image="btnMakealarmShadow"/>
+                                <connections>
+                                    <action selector="addAlarmButtonDidTap:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="PUb-2P-Dgp"/>
+                                </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
