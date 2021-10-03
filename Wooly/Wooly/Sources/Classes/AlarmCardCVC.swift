@@ -9,6 +9,7 @@ import UIKit
 
 class AlarmCardCVC: UICollectionViewCell {
     
+    var alarmModel = Alarms.shared
     var alarmInfo: Alarm? = nil
     let alarmOnImage = UIImage(named: "iconMainMissionAlarm")
     let promiseOnImage = UIImage(named: "iconMainMissionPromise")
@@ -62,8 +63,10 @@ class AlarmCardCVC: UICollectionViewCell {
     func getWeekdayString() -> String {
         let weekdays = ["일","월","화","수","목","금","토"]
         var weekdayString = ""
-        for i in alarmInfo!.repeatWeekdays{
-            weekdayString += "\(weekdays[i]) "
+        for i in 1..<8 {
+            if alarmInfo!.repeatWeekdays.contains(i) {
+                weekdayString += "\(weekdays[i-1]) "
+            }
         }
         return weekdayString
     }
@@ -126,18 +129,16 @@ class AlarmCardCVC: UICollectionViewCell {
         }
     }
     @IBAction func alarmSwitchDidTap(_ sender: UISwitch) {
-        print("valuechanged")
-        var alarmList: Array<Alarm> = UserDefaults.standard.getObjectList(Alarm.self, forKey: "AlarmList") ?? Array<Alarm>()
         alarmInfo!.enabled = sender.isOn
         
         setOnOff(enabled: sender.isOn)
         
-        for i in 0..<alarmList.count {
-            if alarmList[i].uuid == alarmInfo!.uuid {
-                alarmList[i] = alarmInfo!
+        for i in 0..<alarmModel.count {
+            if Alarms.shared.alarms[i].uuid == alarmInfo!.uuid {
+                Alarms.shared.alarms[i] = alarmInfo!
                 break
             }
         }
-        UserDefaults.standard.setObjectList(alarmList, forKey: "AlarmList")
+//        alarmModel.updateAlarmUserDefaults()
     }
 }

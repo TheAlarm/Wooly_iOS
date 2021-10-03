@@ -8,18 +8,27 @@
 import SnapKit
 import Then
 import UIKit
+import AudioToolbox
 
 let screenBounds = UIScreen.main.bounds
 let defaultWidth = 375
 
 class AddAlarmVC: UIViewController {
-    
+    var lastScrollViewOffset = CGPoint.zero
+    var feedbackGenerator: UISelectionFeedbackGenerator?
     let weekdayList = ["일","월","화","수","목","금","토"]
     let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout().then {
             $0.itemSize = CGSize(width: 33, height: 33)
         $0.sectionInset = UIEdgeInsets(top: 22*screenBounds.width/CGFloat(defaultWidth), left: 21*screenBounds.width/CGFloat(defaultWidth), bottom: 21*screenBounds.width/CGFloat(defaultWidth), right: 21*screenBounds.width/CGFloat(defaultWidth))
         $0.minimumInteritemSpacing = 9
     }
+    let alarmModel = Alarms.shared
+    var alarm = Alarm() {
+        didSet {
+            setAlarmOptionsView()
+        }
+    }
+    var existingAlarm: Alarm?
     //MARK: - UIComponent
     let weekdayLine = GrayLine()
     let bellTypeLine = GrayLine()
@@ -41,6 +50,7 @@ class AddAlarmVC: UIViewController {
         $0.frame = CGRect(x: 0, y: 0, width: 16, height: 16)
         $0.setImage(UIImage(named:"icon_makealarm_arrow"), for: .normal)
         $0.contentMode = .scaleAspectFill
+        $0.addTarget(self, action: #selector(missionButtonDidTap(sender:)), for: .touchUpInside)
     }
 
     let weekdayCollectionView = UICollectionView(frame: CGRect.zero, collectionViewLayout: UICollectionViewLayout()).then {
@@ -85,6 +95,7 @@ class AddAlarmVC: UIViewController {
         $0.frame = CGRect.init()
         $0.setImage(UIImage(named:"btn_makealarm_sound_off") ?? UIImage(), for: .normal)
         $0.setImage(UIImage(named:"btn_makealarm_sound_on") ?? UIImage(), for: .selected)
+//        $0.isSelected = alarm.volume > 0
         $0.addTarget(self, action: #selector(bellTypeSoundButtonDidTap(sender:)), for: .touchUpInside)
         
     }
@@ -92,6 +103,7 @@ class AddAlarmVC: UIViewController {
         $0.frame = CGRect.init()
         $0.setImage(UIImage(named:"btn_makealarm_vib_off") ?? UIImage(), for: .normal)
         $0.setImage(UIImage(named:"btn_makealarm_vib_on") ?? UIImage(), for: .selected)
+        $0.isSelected = true
         $0.addTarget(self, action: #selector(bellTypeVibButtonDidTap(sender:)), for: .touchUpInside)
     }
     let bellSettingSoundNameButton = UIButton().then {
@@ -106,12 +118,14 @@ class AddAlarmVC: UIViewController {
     }
     let bellSettingSlider = UISlider().then {
         $0.maximumTrackTintColor = .lineGray
-        $0.thumbTintColor = .mainPur
+//        $0.thumbTintColor = .mainPur
         $0.setThumbImage(UIImage(named: "thumb_purple"), for: .normal)
         $0.setThumbImage(UIImage(named: "thumb_purple"), for: .highlighted)
         $0.minimumValue = 0.0
         $0.maximumValue = 1.0
+        $0.setValue($0.maximumValue, animated: false)
         $0.minimumTrackTintColor = .mainPur
+        $0.addTarget(self, action: #selector(sliderValueChanged(sender:)), for: .valueChanged)
         
     }
     let bellSettingImageView = UIImageView().then {
@@ -126,6 +140,7 @@ class AddAlarmVC: UIViewController {
         $0.backgroundColor = .clear
         $0.textColor = .gray1
         $0.font = .spoqaSans(size: 15, family: .Regular)
+        $0.returnKeyType = .done
     }
     
     let addAlarmButton = UIButton().then {
@@ -135,6 +150,7 @@ class AddAlarmVC: UIViewController {
         $0.setTitleColor(.white, for: .normal)
         $0.titleLabel?.font = .spoqaSans(size: 16, family: .Bold)
         $0.titleEdgeInsets = UIEdgeInsets(top: 3, left: 0, bottom: 0, right: 0)
+        $0.addTarget(self, action: #selector(addAlarm(sender:)), for: .touchUpInside)
     }
     //MARK: - IBOutlets
     
@@ -150,15 +166,26 @@ class AddAlarmVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setFeedbackGenerator()
         setStyle()
-        setPicker()
+        initPicker()
         setLayout()
+        alarmMemoTextField.delegate = self
         weekdayCollectionView.delegate = self
         weekdayCollectionView.dataSource = self
         weekdayCollectionView.collectionViewLayout = layout
         weekdayCollectionView.register(WeekdayCVC.self,forCellWithReuseIdentifier: WeekdayCVC.identifier)
-        datePicker.addTarget(self, action: #selector(donePicker(sender:)), for: .valueChanged)
-
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        if let existing = existingAlarm {
+            alarm = existing
+        }
+        setAlarmOptionsView()
+    }
+    func setFeedbackGenerator() {
+        feedbackGenerator = UISelectionFeedbackGenerator()
+        feedbackGenerator?.prepare()
     }
     func setStyle(){
         titleLabel.font = UIFont.spoqaSans(size: 22, family: .Bold)
@@ -181,13 +208,82 @@ class AddAlarmVC: UIViewController {
         nextAlarmMessageLabel.font = .spoqaSans(size: 12, family: .Bold)
         nextAlarmMessageLabel.textColor = .white
     }
-    func setPicker(){
+    func initPicker(){
         datePicker.datePickerMode = .time
         datePicker.preferredDatePickerStyle = .wheels
         datePicker.calendar = Calendar.current
         datePicker.locale = Locale(identifier: "ko-KR")
         datePicker.tintColor = .mainPur
+        datePicker.addTarget(self, action: #selector(pickerValueChanged(sender:)), for: .valueChanged)
     
+    }
+    func setPickerDate() {
+        datePicker.date = alarm.date
+    }
+    func setAlarmMissionOptionLabel() {
+        alarmMissionOptionLabel.text = alarm.mission.rawValue
+    }
+    func setWeekday() {
+        for weekday in alarm.repeatWeekdays {
+            weekdayCollectionView.selectItem(at: [0,weekday-1], animated: false, scrollPosition: .left)
+        }
+    }
+    func setBellTypeButton() {
+        bellTypeSoundButton.isSelected = alarm.volume > 0
+        bellTypeVibButton.isSelected = alarm.vibration
+    }
+    func setBellSettingSlider() {
+        bellSettingSlider.value = alarm.volume
+        if bellSettingSlider.value == 0 {
+            bellSettingSlider.setThumbImage(UIImage(named: "thumb_gray"), for: .normal)
+            bellSettingSlider.setThumbImage(UIImage(named: "thumb_gray"), for: .highlighted)
+        }
+        else {
+            bellSettingSlider.setThumbImage(UIImage(named: "thumb_purple"), for: .normal)
+            bellSettingSlider.setThumbImage(UIImage(named: "thumb_purple"), for: .highlighted)
+        }
+    }
+    func setBellSettingImageView() {
+        if bellSettingSlider.value == 0 {
+            bellSettingImageView.image = UIImage(named:"iconMakealarmBellOff")
+        }
+        else {
+            bellSettingImageView.image = UIImage(named:"iconMakealarmBellOn")
+        }
+    }
+    func setMemo() {
+        alarmMemoTextField.text = alarm.memo
+    }
+    func setAlarmOptionsView(){
+        setPickerDate()
+        setNextAlarmMessage()
+        setAlarmMissionOptionLabel()
+        setWeekday()
+        setBellTypeButton()
+        setBellSettingSlider()
+        setBellSettingImageView()
+        setMemo()
+    }
+    func setNextAlarmMessage(){
+        let time = alarm.remainingMinute
+        let day = time / 1440
+        let hour = (time % 1440) / 60
+        let minute = (time % 1440) % 60
+        var dayString = ""
+        var hourString = ""
+        var minuteString = ""
+        if day != 0 {
+            dayString = "\(day)일 "
+        }
+        if hour != 0 {
+            hourString = "\(hour)시간 "
+        }
+        if minute != 0 {
+            minuteString = "\(minute)분 "
+        }
+        let messageString = dayString + hourString + minuteString + "후에 알람이 울립니다"
+        nextAlarmMessageLabel.text = messageString
+        
     }
     func setLayout(){
         //MARK: - Add Components
@@ -227,15 +323,10 @@ class AddAlarmVC: UIViewController {
         self.scrollView.addSubview(addAlarmButton)
         
         //MARK: - Add Layouts
-        weekdayLine.snp.makeConstraints {
-            $0.centerX.equalToSuperview()
-            $0.top.equalTo(alarmMissionTitleLabel.snp.bottom).offset(16)
-        }
         alarmMissionTitleLabel.snp.makeConstraints {
-            $0.top.equalTo(purpleRoundView.snp.bottom).offset(16)
+            $0.top.equalTo(purpleRoundView.snp.bottom).offset(19)
             $0.leading.equalTo(weekdayLine.snp.leading).offset(8)
         }
-        
         alarmMissionButton.snp.makeConstraints {
             $0.trailing.equalTo(weekdayLine.snp.trailing).offset(-4)
             $0.top.equalTo(purpleRoundView.snp.bottom).offset(21)
@@ -245,6 +336,11 @@ class AddAlarmVC: UIViewController {
         alarmMissionOptionLabel.snp.makeConstraints {
             $0.centerY.equalTo(alarmMissionButton.snp.centerY)
             $0.trailing.equalTo(alarmMissionButton.snp.leading).offset(-6)
+        }
+        
+        weekdayLine.snp.makeConstraints {
+            $0.centerX.equalToSuperview()
+            $0.top.equalTo(alarmMissionButton.snp.bottom).offset(19)
         }
         weekdayTitleLabel.snp.makeConstraints {
             $0.top.equalTo(weekdayLine.snp.bottom).offset(16)
@@ -383,20 +479,64 @@ class AddAlarmVC: UIViewController {
         
         
     }
+    
+    //MARK: - IBActions
+    @IBAction func closeButtonDidTap(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
+    }
+    
+    
+    // MARK: - Objc functions
+    
     @objc func holidayExceptionViewDidTap(sender: UIView) {
         
     }
     @objc func bellTypeSoundButtonDidTap(sender: UIButton) {
+        feedbackGenerator?.selectionChanged()
         sender.isSelected = !sender.isSelected
+        if sender.isSelected {
+            alarm.volume = 1.0
+        }
+        else {
+            alarm.volume = 0.0
+        }
     }
     @objc func bellTypeVibButtonDidTap(sender: UIButton) {
+        feedbackGenerator?.selectionChanged()
         sender.isSelected = !sender.isSelected
+        if sender.isSelected {
+            alarm.vibration = true
+        }
+        else {
+            alarm.vibration = false
+        }
     }
-    @objc func donePicker(sender: UIDatePicker) {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "YY-MM-dd HH:mm"
-        dateFormatter.locale = Locale(identifier: "ko-KR")
-        print(dateFormatter.string(from: sender.date))
+    @objc func pickerValueChanged(sender: UIDatePicker) {
+        alarm.date = sender.date
+    }
+    @objc func sliderValueChanged(sender: UISlider) {
+        alarm.volume = sender.value
+    }
+    @objc func addAlarm(sender: UIButton) {
+        alarmMemoTextField.resignFirstResponder()
+        alarm.enabled = true
+        if let existing = existingAlarm {
+            for i in 0..<alarmModel.alarms.count {
+                if alarmModel.alarms[i].uuid == existing.uuid {
+                    alarmModel.alarms[i] = alarm
+                }
+            }
+        }
+        else{
+            alarmModel.alarms.append(alarm)
+        }
+        self.dismiss(animated: true, completion: nil)
+    }
+    @objc func missionButtonDidTap(sender: UIButton) {
+        let missionOptionsVC = storyboard?.instantiateViewController(withIdentifier: "MissionOptionsVC") as! MissionOptionsVC
+        missionOptionsVC.mission = alarm.mission
+        navigationController?.pushViewController(missionOptionsVC, animated: true)
+        
     }
     
 }
@@ -447,13 +587,17 @@ extension AddAlarmVC: UICollectionViewDelegateFlowLayout, UICollectionViewDataSo
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: WeekdayCVC.identifier, for: indexPath) as? WeekdayCVC else { return UICollectionViewCell() }
+        cell.alarmInfo = alarm
         cell.setLabel(text: weekdayList[indexPath.item])
-//        cell.contentView.backgroundColor = .blue
         return cell
     }
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let cell = collectionView.cellForItem(at: indexPath)
-        cell?.isSelected = !(cell!.isSelected)
+        feedbackGenerator?.selectionChanged()
+        alarm.repeatWeekdays.append(indexPath.item + 1)
+    }
+    func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
+        feedbackGenerator?.selectionChanged()
+        alarm.repeatWeekdays.remove(at: alarm.repeatWeekdays.firstIndex(of: indexPath.item + 1)!)
     }
     
 //    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
@@ -467,3 +611,147 @@ extension AddAlarmVC: UICollectionViewDelegateFlowLayout, UICollectionViewDataSo
     
 }
 
+extension AddAlarmVC: UITextFieldDelegate {
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        lastScrollViewOffset = scrollView.contentOffset
+        scrollView.setContentOffset(CGPoint(x: 0, y: Int(alarmMemoTextField.frame.origin.y) - 413 * Int(screenBounds.width) / defaultWidth), animated: true)
+    }
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        scrollView.setContentOffset(lastScrollViewOffset, animated: true)
+        textField.resignFirstResponder()
+        return true
+    }
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        alarm.memo = textField.text ?? ""
+    }
+}
+//
+//class AlarmOptionsView: UIView {
+//    let weekdayLine = GrayLine()
+//    let bellTypeLine = GrayLine()
+//    let bellSettingLine = GrayLine()
+//    let alarmMemoLine = GrayLine()
+//    let alarmMissionTitleLabel = TableTitleLabel(text: "알람 미션")
+//    let weekdayTitleLabel = TableTitleLabel(text: "요일 선택")
+//    let bellTypeTitleLabel = TableTitleLabel(text: "타입")
+//    let bellSettingTitleLabel = TableTitleLabel(text: "벨소리")
+//    let alarmMemoTitleLabel = TableTitleLabel(text: "알람 메모")
+//    let alarmMissionOptionLabel = UILabel().then {
+//        $0.text = "기본"
+//        $0.frame = CGRect(x: 0, y: 0, width: 24, height: 18)
+//        $0.font = .spoqaSans(size: 12, family: .Regular)
+//        $0.textColor = .gray4
+//    }
+//    let alarmMissionButton = UIButton().then{
+//        $0.setTitle("", for: .normal)
+//        $0.frame = CGRect(x: 0, y: 0, width: 16, height: 16)
+//        $0.setImage(UIImage(named:"icon_makealarm_arrow"), for: .normal)
+//        $0.contentMode = .scaleAspectFill
+//    }
+//
+//    let weekdayCollectionView = UICollectionView(frame: CGRect.zero, collectionViewLayout: UICollectionViewLayout()).then {
+//        $0.frame = CGRect(x: 0, y: 0, width: 327*Int(screenBounds.width)/defaultWidth, height: 76*Int(screenBounds.width)/defaultWidth)
+//        $0.backgroundColor = UIColor.greyBg
+//        $0.makeRounded(cornerRadius: 5)
+//        $0.allowsMultipleSelection = true
+//    }
+//    let holidayExceptionView = UIView().then {
+//        $0.frame = CGRect(x: 0, y: 0, width: 159*Int(screenBounds.width)/defaultWidth, height: 40*Int(screenBounds.width)/defaultWidth)
+//        $0.backgroundColor = UIColor.greyBg
+//        $0.isHidden = true
+//    }
+//    let holidayExceptionLabel = UILabel().then {
+//        $0.frame = CGRect(x: 0, y: 0, width: 70, height: 21)
+//        $0.text = "공휴일 제외"
+//        $0.font = .spoqaSans(size: 14, family: .Regular)
+//        $0.textColor = UIColor(white: 0.74, alpha: 1)
+//    }
+//    let holidayExceptionCheckImageView = UIImageView().then {
+//        $0.frame = CGRect(x: 0, y: 0, width: 16, height: 16)
+//        $0.image = UIImage(named:"icon_makealarm_check_gray")
+//
+//    }
+//    let specificExceptionView = UIView().then {
+//        $0.frame = CGRect(x: 0, y: 0, width: 159*Int(screenBounds.width)/defaultWidth, height: 40*Int(screenBounds.width)/defaultWidth)
+//        $0.backgroundColor = UIColor.greyBg
+//        $0.isHidden = true
+//    }
+//    let specificExceptionLabel = UILabel().then {
+//        $0.frame = CGRect(x: 0, y: 0, width: 70, height: 21)
+//        $0.text = "특정일 제외"
+//        $0.font = .spoqaSans(size: 14, family: .Regular)
+//        $0.textColor = UIColor(white: 0.74, alpha: 1)
+//    }
+//    let specificExceptionCheckImageView = UIImageView().then {
+//        $0.frame = CGRect(x: 0, y: 0, width: 16, height: 16)
+//        $0.image = UIImage(named:"icon_makealarm_check_gray")
+//
+//    }
+//    let bellTypeSoundButton = UIButton().then {
+//        $0.frame = CGRect.init()
+//        $0.setImage(UIImage(named:"btn_makealarm_sound_off") ?? UIImage(), for: .normal)
+//        $0.setImage(UIImage(named:"btn_makealarm_sound_on") ?? UIImage(), for: .selected)
+////        $0.isSelected = alarm.volume > 0
+////        $0.addTarget(self, action: #selector(bellTypeSoundButtonDidTap(sender:)), for: .touchUpInside)
+//
+//    }
+//    let bellTypeVibButton = UIButton().then {
+//        $0.frame = CGRect.init()
+//        $0.setImage(UIImage(named:"btn_makealarm_vib_off") ?? UIImage(), for: .normal)
+//        $0.setImage(UIImage(named:"btn_makealarm_vib_on") ?? UIImage(), for: .selected)
+//        $0.isSelected = true
+////        $0.addTarget(self, action: #selector(bellTypeVibButtonDidTap(sender:)), for: .touchUpInside)
+//    }
+//    let bellSettingSoundNameButton = UIButton().then {
+//        $0.titleLabel?.font = .spoqaSans(size: 12, family: .Regular)
+//        $0.setTitleColor(.gray4, for: .normal)
+//        $0.setTitle("벨소리이름길게길게", for: .normal)
+//        $0.titleLabel?.lineBreakMode = .byTruncatingTail
+//    }
+//    let bellSettingSoundSelectButton = UIButton().then {
+//        $0.setImage(UIImage(named:"icon_makealarm_arrow") ?? UIImage(), for: .normal)
+//        $0.setTitle("", for: .normal)
+//    }
+//    let bellSettingSlider = UISlider().then {
+//        $0.maximumTrackTintColor = .lineGray
+////        $0.thumbTintColor = .mainPur
+//        $0.setThumbImage(UIImage(named: "thumb_purple"), for: .normal)
+//        $0.setThumbImage(UIImage(named: "thumb_purple"), for: .highlighted)
+//        $0.minimumValue = 0.0
+//        $0.maximumValue = 1.0
+//        $0.setValue($0.maximumValue, animated: false)
+//        $0.minimumTrackTintColor = .mainPur
+////        $0.addTarget(self, action: #selector(sliderValueChanged(sender:)), for: .valueChanged)
+//
+//    }
+//    let bellSettingImageView = UIImageView().then {
+//        $0.image = UIImage(named:"iconMakealarmBellOn")
+//    }
+//    let alarmMemoBoxView = UIView().then {
+//        $0.backgroundColor = .paleGrey
+//        $0.setBorder(borderColor: .lineGray, borderWidth: 1)
+//        $0.layer.cornerRadius = 3
+//    }
+//    let alarmMemoTextField = UITextField().then {
+//        $0.backgroundColor = .clear
+//        $0.textColor = .gray1
+//        $0.font = .spoqaSans(size: 15, family: .Regular)
+//        $0.returnKeyType = .done
+//    }
+//
+//    let addAlarmButton = UIButton().then {
+//        $0.backgroundColor = .mainColor
+//        $0.layer.cornerRadius = 22
+//        $0.setTitle("알람 추가", for: .normal)
+//        $0.setTitleColor(.white, for: .normal)
+//        $0.titleLabel?.font = .spoqaSans(size: 16, family: .Bold)
+//        $0.titleEdgeInsets = UIEdgeInsets(top: 3, left: 0, bottom: 0, right: 0)
+////        $0.addTarget(self, action: #selector(addAlarm(sender:)), for: .touchUpInside)
+//    }
+//
+//    override init(frame: CGRect) {
+//        super.init(frame: frame)
+//
+//        addSubview(<#T##view: UIView##UIView#>)
+//    }
+//}

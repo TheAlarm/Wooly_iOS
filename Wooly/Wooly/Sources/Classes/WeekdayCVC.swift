@@ -11,6 +11,7 @@ import UIKit
 
 class WeekdayCVC: UICollectionViewCell {
     static let identifier = "WeekdayCVC"
+    var alarmInfo: Alarm? = nil
     override var isSelected: Bool {
         willSet {
             if newValue {
@@ -47,11 +48,11 @@ class WeekdayCVC: UICollectionViewCell {
     }
     
 
-    func setLabel(text: String){
+    func setLabel(text: String) {
         weekdayLabel.text = text
     }
     
-    func setLayout(){
+    func setLayout() {
         weekdayCircleView.snp.makeConstraints {
             $0.edges.equalToSuperview()
             $0.width.equalTo(33)

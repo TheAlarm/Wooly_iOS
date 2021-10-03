@@ -29,6 +29,7 @@ class Scheduler{
         content.title = contentTitle
         content.body = contentBody
         content.sound = sound
+        content.interruptionLevel = .critical
         
         //MARK: TEST
         let intervalTrigger = UNTimeIntervalNotificationTrigger(timeInterval: 3.0, repeats: false)

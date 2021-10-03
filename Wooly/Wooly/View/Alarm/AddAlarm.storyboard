@@ -1,12 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Y6W-OH-hqX">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina5_9" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="Spoqa Han Sans Neo Bold.otf">
+            <string>SpoqaHanSansNeo-Bold</string>
+        </array>
+    </customFonts>
     <scenes>
         <!--AddAlarmVC-->
         <scene sceneID="s0d-6b-0kx">
@@ -125,6 +130,9 @@
                                     <constraint firstAttribute="width" constant="24" id="quW-3u-ZwU"/>
                                 </constraints>
                                 <state key="normal" image="btn_close_gray"/>
+                                <connections>
+                                    <action selector="closeButtonDidTap:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="ZAu-hh-QgG"/>
+                                </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
@@ -140,6 +148,7 @@
                             <constraint firstItem="XvD-Eu-4LG" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="ugI-fC-55S"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="05L-y7-CJj"/>
                     <connections>
                         <outlet property="datePicker" destination="tRK-nU-zX4" id="vgh-ld-6o4"/>
                         <outlet property="nextAlarmMessageLabel" destination="xkG-85-PJB" id="eAz-W3-ei1"/>
@@ -154,10 +163,54 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-330.39999999999998" y="-376.84729064039408"/>
+            <point key="canvasLocation" x="612" y="-376.84729064039408"/>
+        </scene>
+        <!--MissionOptionsVC-->
+        <scene sceneID="7Kj-Mc-Xpg">
+            <objects>
+                <viewController storyboardIdentifier="MissionOptionsVC" title="MissionOptionsVC" id="b7J-qN-LwF" customClass="MissionOptionsVC" customModule="Wooly" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="bVb-l2-RVM">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="알람 미션" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MSj-1j-hVR">
+                                <rect key="frame" x="152" y="52" width="71" height="22"/>
+                                <fontDescription key="fontDescription" name="SpoqaHanSansNeo-Bold" family="Spoqa Han Sans Neo" pointSize="18"/>
+                                <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="aUd-uh-sMi">
+                                <rect key="frame" x="78" y="91" width="240" height="12"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.20000000000000001" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
+                            <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JSw-ZC-wD1">
+                                <rect key="frame" x="6" y="51" width="24" height="24"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="24" id="DNe-uY-boJ"/>
+                                    <constraint firstAttribute="width" constant="24" id="Kau-o9-zdh"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" image="btn_back"/>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="6ZH-T0-zYj"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="MSj-1j-hVR" firstAttribute="top" secondItem="6ZH-T0-zYj" secondAttribute="top" constant="8" id="HYi-4c-q9R"/>
+                            <constraint firstItem="MSj-1j-hVR" firstAttribute="centerX" secondItem="6ZH-T0-zYj" secondAttribute="centerX" id="ZOt-py-tQa"/>
+                            <constraint firstItem="JSw-ZC-wD1" firstAttribute="centerY" secondItem="MSj-1j-hVR" secondAttribute="centerY" id="ZPX-yb-rH4"/>
+                            <constraint firstItem="JSw-ZC-wD1" firstAttribute="leading" secondItem="6ZH-T0-zYj" secondAttribute="leading" constant="6" id="kTC-NQ-Q8c"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="K2v-Ik-oLn" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1282.4000000000001" y="-376.84729064039408"/>
         </scene>
     </scenes>
     <resources>
+        <image name="btn_back" width="144" height="144"/>
         <image name="btn_close_gray" width="24" height="24"/>
         <image name="img_makealarm_bg_dongdong" width="324" height="372"/>
         <systemColor name="systemBackgroundColor">
